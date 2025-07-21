@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>موعد الافتتاح</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>🔥 موعد الافتتاح بعد 🔥</h1>
+    <div id="countdown"></div>
+  </div>
+
+  <script>
+    const countdownEl = document.getElementById("countdown");
+    const openingTime = new Date().getTime() + (24 * 60 * 60 * 1000); // 24 hours from now
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = openingTime - now;
+
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownEl.innerHTML = `${hours} ساعة ${minutes} دقيقة ${seconds} ثانية`;
+
+      if (distance < 0) {
+        clearInterval(interval);
+        countdownEl.innerHTML = "🚀 تم الافتتاح!";
+      }
+    }
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
