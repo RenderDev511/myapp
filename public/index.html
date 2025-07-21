@@ -9,31 +9,41 @@
 <body>
   <div class="container">
     <h1>🔥 موعد الافتتاح بعد 🔥</h1>
-    <div id="countdown"></div>
+    <div id="countdown">جاري التحميل...</div>
   </div>
 
   <script>
     const countdownEl = document.getElementById("countdown");
-    const openingTime = new Date().getTime() + (24 * 60 * 60 * 1000); // 24 hours from now
 
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = openingTime - now;
+    fetch('/api/opening-time')
+      .then(res => res.json())
+      .then(data => {
+        const openingTime = new Date(data.opentime).getTime();
 
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        function updateCountdown() {
+          const now = new Date().getTime();
+          const distance = openingTime - now;
 
-      countdownEl.innerHTML = `${hours} ساعة ${minutes} دقيقة ${seconds} ثانية`;
+          if (distance < 0) {
+            clearInterval(interval);
+            countdownEl.innerHTML = "🚀 تم الافتتاح!";
+            return;
+          }
 
-      if (distance < 0) {
-        clearInterval(interval);
-        countdownEl.innerHTML = "🚀 تم الافتتاح!";
-      }
-    }
+          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    updateCountdown();
-    const interval = setInterval(updateCountdown, 1000);
+          countdownEl.innerHTML = `${hours} ساعة ${minutes} دقيقة ${seconds} ثانية`;
+        }
+
+        updateCountdown();
+        const interval = setInterval(updateCountdown, 1000);
+      })
+      .catch(err => {
+        console.error(err);
+        countdownEl.innerHTML = "⚠️ فشل جلب وقت الافتتاح";
+      });
   </script>
 </body>
 </html>
