@@ -1,49 +1,28 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>موعد الافتتاح</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div class="container">
-    <h1>🔥 موعد الافتتاح بعد 🔥</h1>
-    <div id="countdown">جاري التحميل...</div>
-  </div>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(45deg, #ff004c, #3700ff);
+  color: white;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
 
-  <script>
-    const countdownEl = document.getElementById("countdown");
+.container {
+  background: rgba(0,0,0,0.5);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.6);
+}
 
-    fetch('/api/opening-time')
-      .then(res => res.json())
-      .then(data => {
-        const openingTime = new Date(data.opentime).getTime();
+h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
 
-        function updateCountdown() {
-          const now = new Date().getTime();
-          const distance = openingTime - now;
-
-          if (distance < 0) {
-            clearInterval(interval);
-            countdownEl.innerHTML = "🚀 تم الافتتاح!";
-            return;
-          }
-
-          const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-          const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-          const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-          countdownEl.innerHTML = `${hours} ساعة ${minutes} دقيقة ${seconds} ثانية`;
-        }
-
-        updateCountdown();
-        const interval = setInterval(updateCountdown, 1000);
-      })
-      .catch(err => {
-        console.error(err);
-        countdownEl.innerHTML = "⚠️ فشل جلب وقت الافتتاح";
-      });
-  </script>
-</body>
-</html>
+#countdown {
+  font-size: 1.5em;
+}

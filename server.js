@@ -15,15 +15,19 @@ const pool = new Pool({
 
 pool.connect()
   .then(client => {
-    console.log("✅ Connected to Neon database");
+    console.log("✅ Connected to Neon DB");
     client.release();
   })
-  .catch(err => console.error("DB connection error", err.stack));
+  .catch(err => console.error("❌ DB connection error:", err.stack));
 
 app.get('/api/opening-time', async (req, res) => {
   try {
     const result = await pool.query('SELECT opentime FROM opening ORDER BY id LIMIT 1');
-    res.json({ opentime: result.rows[0].opentime });
+    if (result.rows.length > 0) {
+      res.json({ opentime: result.rows[0].opentime });
+    } else {
+      res.status(404).json({ error: 'Opening time not found' });
+    }
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Database error' });
@@ -31,5 +35,5 @@ app.get('/api/opening-time', async (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
