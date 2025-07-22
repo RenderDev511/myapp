@@ -4,8 +4,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Cairo', sans-serif;
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  color: #ffffff;
+  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+  color: #fff;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -15,38 +15,41 @@ body {
 }
 
 .container {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.05);
   padding: 50px 30px;
   border-radius: 20px;
-  box-shadow: 0 0 40px rgba(0, 0, 0, 0.7);
-  animation: fadeInUp 1s ease forwards;
-  transform: translateY(30px);
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 8.5px );
+  -webkit-backdrop-filter: blur( 8.5px );
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  animation: fadeIn 1s ease forwards;
   opacity: 0;
 }
 
 h1 {
-  font-size: 2.5em;
+  font-size: 2.3em;
   margin-bottom: 30px;
-  background: linear-gradient(45deg, #ff4e50, #f9d423);
+  background: linear-gradient(45deg, #ff6a00, #ee0979);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 #countdown {
   font-size: 2em;
-  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  font-weight: 600;
+  background: linear-gradient(45deg, #00f2fe, #4facfe);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-@keyframes fadeInUp {
+@keyframes fadeIn {
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
-/* Optional: subtle animated background effect */
+/* Animated background particles */
+
 body::before {
   content: '';
   position: absolute;
@@ -54,18 +57,34 @@ body::before {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: 50px 50px;
-  animation: moveBg 20s linear infinite;
+  background: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: moveBg 60s linear infinite;
   z-index: 0;
 }
 
 @keyframes moveBg {
   from { transform: translate(0,0); }
-  to { transform: translate(50px,50px); }
+  to { transform: translate(80px,80px); }
 }
 
 .container {
   position: relative;
   z-index: 1;
+}
+
+/* Mobile responsiveness */
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.7em;
+  }
+
+  #countdown {
+    font-size: 1.3em;
+  }
+
+  .container {
+    padding: 30px 20px;
+  }
 }
