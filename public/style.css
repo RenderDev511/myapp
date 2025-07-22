@@ -2,40 +2,34 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Cairo', sans-serif;
-  background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-  color: #fff;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  text-align: center;
 }
 
 .container {
-  background: rgba(0,0,0,0.6);
+  background: rgba(0,0,0,0.5);
   padding: 30px;
   border-radius: 15px;
   width: 90%;
-  max-width: 500px;
-}
-
-h1 {
-  text-align: center;
-  margin-bottom: 20px;
+  max-width: 400px;
 }
 
 input {
-  width: 100%;
+  width: 80%;
   padding: 10px;
-  margin: 5px 0;
   border: none;
   border-radius: 5px;
+  margin-bottom: 10px;
 }
 
 button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  background: #ff6a00;
+  padding: 10px 20px;
+  background: #00c6ff;
   border: none;
   border-radius: 5px;
   color: white;
@@ -44,14 +38,10 @@ button {
 }
 
 button:hover {
-  background: #ee0979;
+  background: #0072ff;
 }
 
-.messages {
-  max-height: 300px;
-  overflow-y: auto;
-  background: rgba(255,255,255,0.1);
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 10px;
+#result img {
+  margin-top: 20px;
+  border-radius: 10px;
 }

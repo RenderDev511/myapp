@@ -1,79 +1,37 @@
-const API = '/.netlify/functions';
+const searchBtn = document.getElementById('search-btn');
+const resultDiv = document.getElementById('result');
 
-const registerBtn = document.getElementById('register-btn');
-const loginBtn = document.getElementById('login-btn');
-const logoutBtn = document.getElementById('logout-btn');
-const authSection = document.getElementById('auth-section');
-const chatSection = document.getElementById('chat-section');
-const authMsg = document.getElementById('auth-msg');
-const messagesEl = document.getElementById('messages');
-const chatForm = document.getElementById('chat-form');
-
-registerBtn.addEventListener('click', () => {
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
+searchBtn.addEventListener('click', async () => {
   const username = document.getElementById('username').value;
-  fetch(`${API}/register`, {
-    method: 'POST',
-    headers: {'Content-Type':'application/json'},
-    body: JSON.stringify({ email, password, username })
-  })
-  .then(res => res.json())
-  .then(data => {
-    authMsg.textContent = data.message;
-  });
-});
+  resultDiv.innerHTML = '🔎 جاري البحث...';
 
-loginBtn.addEventListener('click', () => {
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  fetch(`${API}/login`, {
-    method: 'POST',
-    headers: {'Content-Type':'application/json'},
-    body: JSON.stringify({ email, password })
-  })
-  .then(res => res.json())
-  .then(data => {
-    if(data.success){
-      localStorage.setItem('user_id', data.user.id);
-      localStorage.setItem('username', data.user.username);
-      localStorage.setItem('rank', data.user.rank);
-      authSection.style.display = 'none';
-      chatSection.style.display = 'block';
-      loadMessages();
-      setInterval(loadMessages, 1000);
-    } else {
-      authMsg.textContent = data.message;
-    }
-  });
-});
-
-logoutBtn.addEventListener('click', () => {
-  localStorage.clear();
-  authSection.style.display = 'block';
-  chatSection.style.display = 'none';
-});
-
-chatForm.addEventListener('submit', e => {
-  e.preventDefault();
-  const message = document.getElementById('message').value;
-  const user_id = localStorage.getItem('user_id');
-  fetch(`${API}/message`, {
-    method: 'POST',
-    headers: {'Content-Type':'application/json'},
-    body: JSON.stringify({ user_id, message })
-  }).then(() => {
-    document.getElementById('message').value = '';
-    loadMessages();
-  });
-});
-
-function loadMessages(){
-  fetch(`${API}/messages`)
-    .then(res => res.json())
-    .then(data => {
-      messagesEl.innerHTML = data.messages.map(msg => `
-        <div><strong>[${msg.rank}] ${msg.username}:</strong> ${msg.message}</div>
-      `).join('');
+  try {
+    // جلب userId من username
+    const userRes = await fetch('https://users.roblox.com/v1/usernames/users', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ usernames: [username] })
     });
-}
+
+    const userData = await userRes.json();
+    if(userData.data.length === 0) {
+      resultDiv.innerHTML = '❌ الحساب غير موجود';
+      return;
+    }
+
+    const userId = userData.data[0].id;
+    const displayName = userData.data[0].displayName;
+
+    // رابط صورة الـ Avatar
+    const avatarUrl = `https://www.roblox.com/headshot-thumbnail/image?userId=${userId}&width=420&height=420&format=png`;
+
+    resultDiv.innerHTML = `
+      <h2>${displayName}</h2>
+      <img src="${avatarUrl}" alt="Roblox Avatar" />
+    `;
+
+  } catch (err) {
+    console.error(err);
+    resultDiv.innerHTML = '⚠️ حدث خطأ أثناء جلب البيانات';
+  }
+});
