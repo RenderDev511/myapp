@@ -10,7 +10,7 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 const pool = new Pool({
-  connectionString: 'postgresql://neondb_owner:npg_ucK5Xb8sBLMD@ep-damp-hall-aem3ujkj-pooler.c-2.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
+  connectionString: 'postgresql://neondb_owner:npg_qN9lR1SAbJkT@ep-rough-fog-aeykznns-pooler.c-2.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require'
 });
 
 pool.connect()
