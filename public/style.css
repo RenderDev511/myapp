@@ -1,9 +1,9 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Cairo', sans-serif;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-  color: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,11 +12,39 @@ body {
 }
 
 .container {
-  background: rgba(0,0,0,0.5);
+  background: rgba(0,0,0,0.7);
   padding: 30px;
   border-radius: 15px;
   width: 90%;
-  max-width: 400px;
+  max-width: 450px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.8);
+  backdrop-filter: blur(10px);
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 1.8em;
+}
+
+nav {
+  margin-bottom: 20px;
+}
+
+nav button {
+  margin: 5px;
+  padding: 8px 15px;
+  background: #222;
+  border: none;
+  border-radius: 5px;
+  color: #00c6ff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+nav button:hover {
+  background: #00c6ff;
+  color: white;
 }
 
 input {
@@ -25,6 +53,7 @@ input {
   border: none;
   border-radius: 5px;
   margin-bottom: 10px;
+  font-size: 1em;
 }
 
 button {
@@ -35,6 +64,8 @@ button {
   color: white;
   font-weight: bold;
   cursor: pointer;
+  font-size: 1em;
+  transition: 0.3s;
 }
 
 button:hover {
@@ -44,4 +75,11 @@ button:hover {
 #result img {
   margin-top: 20px;
   border-radius: 10px;
+  width: 200px;
+  height: 200px;
+}
+
+p {
+  margin: 5px 0;
+  font-size: 0.95em;
 }
