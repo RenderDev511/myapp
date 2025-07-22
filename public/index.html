@@ -3,19 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>موعد الافتتاح</title>
+  <title>موعد الافتتاح + شات</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>🔥 موعد الافتتاح بعد 🔥</h1>
-    <div id="countdown">جاري التحميل...</div>
+  <div class="main">
+    <div class="container">
+      <h1>🔥 موعد الافتتاح بعد 🔥</h1>
+      <div id="countdown">جاري التحميل...</div>
+    </div>
 
     <div class="chat">
       <h2>💬 الدردشة</h2>
       <div id="messages" class="messages">جاري التحميل...</div>
       <form id="chat-form">
-        <input type="text" id="username" placeholder="اسمك" required />
         <input type="text" id="message" placeholder="رسالتك" required />
         <button type="submit">إرسال</button>
       </form>
@@ -63,8 +64,9 @@
       fetch('/.netlify/functions/chat')
         .then(res => res.json())
         .then(data => {
+          let counter = 1;
           messagesEl.innerHTML = data.messages.map(msg =>
-            `<div><strong>${msg.username}:</strong> ${msg.message}</div>`
+            `<div><strong>Alpha${counter++}:</strong> ${msg.message}</div>`
           ).join('');
         })
         .catch(err => {
@@ -79,13 +81,12 @@
     // 📝 إرسال رسالة
     chatForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const username = document.getElementById("username").value;
       const message = document.getElementById("message").value;
 
       fetch('/.netlify/functions/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, message })
+        body: JSON.stringify({ username: 'Alpha', message })
       })
       .then(res => res.json())
       .then(data => {

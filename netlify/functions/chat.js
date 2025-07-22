@@ -9,7 +9,7 @@ exports.handler = async function(event, context) {
   if (event.httpMethod === 'GET') {
     // ✅ جلب الرسائل
     try {
-      const result = await pool.query('SELECT username, message FROM messages ORDER BY created_at DESC LIMIT 20');
+      const result = await pool.query('SELECT message FROM messages ORDER BY created_at DESC LIMIT 20');
       return {
         statusCode: 200,
         body: JSON.stringify({ messages: result.rows })
@@ -23,9 +23,9 @@ exports.handler = async function(event, context) {
     }
   } else if (event.httpMethod === 'POST') {
     // ✅ إضافة رسالة جديدة
-    const { username, message } = JSON.parse(event.body);
+    const { message } = JSON.parse(event.body);
     try {
-      await pool.query('INSERT INTO messages (username, message) VALUES ($1, $2)', [username, message]);
+      await pool.query('INSERT INTO messages (username, message) VALUES ($1, $2)', ['Alpha', message]);
       return {
         statusCode: 200,
         body: JSON.stringify({ success: true })
