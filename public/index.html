@@ -15,7 +15,7 @@
   <script>
     const countdownEl = document.getElementById("countdown");
 
-    fetch('/api/opening-time')
+    fetch('/.netlify/functions/opening-time')
       .then(res => res.json())
       .then(data => {
         const openingTime = new Date(data.opentime).getTime();
