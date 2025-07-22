@@ -21,7 +21,9 @@ searchBtn.addEventListener('click', async () => {
     const userId = userData.data[0].id;
     const displayName = userData.data[0].displayName;
 
-    const avatarUrl = `https://www.roblox.com/headshot-thumbnail/image?userId=${userId}&width=420&height=420&format=png`;
+    const avatarRes = await fetch(`https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${userId}&size=420x420&format=Png&isCircular=false`);
+    const avatarData = await avatarRes.json();
+    const avatarUrl = avatarData.data[0].imageUrl;
 
     resultDiv.innerHTML = `
       <h2>${displayName}</h2>
@@ -33,3 +35,4 @@ searchBtn.addEventListener('click', async () => {
     resultDiv.innerHTML = '⚠️ حدث خطأ أثناء جلب البيانات';
   }
 });
+
