@@ -21,7 +21,11 @@ searchBtn.addEventListener('click', async () => {
     const userId = userData.data[0].id;
     const displayName = userData.data[0].displayName;
 
-    const avatarRes = await fetch(`https://thumbnails.roblox.com/v1/users/avatar-headshot?userIds=${userId}&size=420x420&format=Png&isCircular=false`);
+    const avatarRes = await fetch('/.netlify/functions/getAvatar', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ userId })
+    });
     const avatarData = await avatarRes.json();
     const avatarUrl = avatarData.data[0].imageUrl;
 
@@ -35,4 +39,3 @@ searchBtn.addEventListener('click', async () => {
     resultDiv.innerHTML = '⚠️ حدث خطأ أثناء جلب البيانات';
   }
 });
-
