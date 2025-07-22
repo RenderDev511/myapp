@@ -24,6 +24,8 @@ body {
   border: 1px solid rgba( 255, 255, 255, 0.18 );
   animation: fadeIn 1s ease forwards;
   opacity: 0;
+  max-width: 500px;
+  width: 100%;
 }
 
 h1 {
@@ -40,51 +42,59 @@ h1 {
   background: linear-gradient(45deg, #00f2fe, #4facfe);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin-bottom: 30px;
+}
+
+.chat {
+  text-align: right;
+}
+
+.chat h2 {
+  margin-bottom: 10px;
+}
+
+.messages {
+  max-height: 200px;
+  overflow-y: auto;
+  background: rgba(0,0,0,0.3);
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.messages div {
+  margin-bottom: 5px;
+}
+
+#chat-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#chat-form input {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+#chat-form button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background: #ff6a00;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#chat-form button:hover {
+  background: #ee0979;
 }
 
 @keyframes fadeIn {
   to {
     opacity: 1;
-  }
-}
-
-/* Animated background particles */
-
-body::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
-  background-size: 80px 80px;
-  animation: moveBg 60s linear infinite;
-  z-index: 0;
-}
-
-@keyframes moveBg {
-  from { transform: translate(0,0); }
-  to { transform: translate(80px,80px); }
-}
-
-.container {
-  position: relative;
-  z-index: 1;
-}
-
-/* Mobile responsiveness */
-
-@media (max-width: 600px) {
-  h1 {
-    font-size: 1.7em;
-  }
-
-  #countdown {
-    font-size: 1.3em;
-  }
-
-  .container {
-    padding: 30px 20px;
   }
 }

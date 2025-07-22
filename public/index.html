@@ -10,11 +10,24 @@
   <div class="container">
     <h1>🔥 موعد الافتتاح بعد 🔥</h1>
     <div id="countdown">جاري التحميل...</div>
+
+    <div class="chat">
+      <h2>💬 الدردشة</h2>
+      <div id="messages" class="messages">جاري التحميل...</div>
+      <form id="chat-form">
+        <input type="text" id="username" placeholder="اسمك" required />
+        <input type="text" id="message" placeholder="رسالتك" required />
+        <button type="submit">إرسال</button>
+      </form>
+    </div>
   </div>
 
   <script>
     const countdownEl = document.getElementById("countdown");
+    const messagesEl = document.getElementById("messages");
+    const chatForm = document.getElementById("chat-form");
 
+    // 🔴 تحميل وقت الافتتاح
     fetch('/.netlify/functions/opening-time')
       .then(res => res.json())
       .then(data => {
@@ -44,6 +57,43 @@
         console.error(err);
         countdownEl.innerHTML = "⚠️ فشل جلب وقت الافتتاح";
       });
+
+    // 🔵 جلب الرسائل
+    function loadMessages() {
+      fetch('/.netlify/functions/chat')
+        .then(res => res.json())
+        .then(data => {
+          messagesEl.innerHTML = data.messages.map(msg =>
+            `<div><strong>${msg.username}:</strong> ${msg.message}</div>`
+          ).join('');
+        })
+        .catch(err => {
+          console.error(err);
+          messagesEl.innerHTML = "⚠️ فشل جلب الرسائل";
+        });
+    }
+
+    loadMessages();
+    setInterval(loadMessages, 1000);
+
+    // 📝 إرسال رسالة
+    chatForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const username = document.getElementById("username").value;
+      const message = document.getElementById("message").value;
+
+      fetch('/.netlify/functions/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, message })
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("message").value = '';
+        loadMessages();
+      })
+      .catch(err => console.error(err));
+    });
   </script>
 </body>
 </html>
