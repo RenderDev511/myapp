@@ -6,11 +6,10 @@ searchBtn.addEventListener('click', async () => {
   resultDiv.innerHTML = '🔎 جاري البحث...';
 
   try {
-    // جلب userId من username
-    const userRes = await fetch('https://users.roblox.com/v1/usernames/users', {
+    const userRes = await fetch('/.netlify/functions/getUser', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ usernames: [username] })
+      body: JSON.stringify({ username })
     });
 
     const userData = await userRes.json();
@@ -22,7 +21,6 @@ searchBtn.addEventListener('click', async () => {
     const userId = userData.data[0].id;
     const displayName = userData.data[0].displayName;
 
-    // رابط صورة الـ Avatar
     const avatarUrl = `https://www.roblox.com/headshot-thumbnail/image?userId=${userId}&width=420&height=420&format=png`;
 
     resultDiv.innerHTML = `
