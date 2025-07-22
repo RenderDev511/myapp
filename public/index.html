@@ -3,22 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Roblox Viewer Pro</title>
+  <title>Night Store</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>🎮 Roblox Viewer Menu</h1>
-    <nav>
-      <button onclick="location.href='index.html'">الرئيسية</button>
-      <button onclick="alert('قريبًا')">Premium</button>
-      <button onclick="alert('قريبًا')">Games</button>
-    </nav>
+    <h1>🛒 Night Digital Store</h1>
 
-    <input type="text" id="username" placeholder="اكتب اسم حساب Roblox" />
-    <button id="search-btn">بحث</button>
+    <div id="user-section">
+      <input type="email" id="email" placeholder="الإيميل">
+      <input type="password" id="password" placeholder="كلمة السر">
+      <input type="text" id="username" placeholder="اسم المستخدم">
+      <button id="register">تسجيل</button>
+      <button id="login">دخول</button>
+    </div>
 
-    <div id="result"></div>
+    <button id="daily">🎁 Daily Reward</button>
+    <div id="coins">💰 Coins: 0</div>
+
+    <div id="products"></div>
   </div>
 
   <script src="main.js"></script>
