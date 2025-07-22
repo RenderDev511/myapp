@@ -1,70 +1,77 @@
-const countdownEl = document.getElementById("countdown");
-const messagesEl = document.getElementById("messages");
-const chatForm = document.getElementById("chat-form");
+const registerBtn = document.getElementById('register-btn');
+const loginBtn = document.getElementById('login-btn');
+const logoutBtn = document.getElementById('logout-btn');
+const authSection = document.getElementById('auth-section');
+const chatSection = document.getElementById('chat-section');
+const authMsg = document.getElementById('auth-msg');
+const messagesEl = document.getElementById('messages');
+const chatForm = document.getElementById('chat-form');
 
-// 🔴 تحميل وقت الافتتاح
-fetch('/.netlify/functions/opening-time')
+registerBtn.addEventListener('click', () => {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const username = document.getElementById('username').value;
+  fetch('/api/register', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({ email, password, username })
+  })
   .then(res => res.json())
   .then(data => {
-    const openingTime = new Date(data.opentime).getTime();
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = openingTime - now;
-
-      if (distance < 0) {
-        clearInterval(interval);
-        countdownEl.innerHTML = "🚀 تم الافتتاح!";
-        return;
-      }
-
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      countdownEl.innerHTML = `${hours} ساعة ${minutes} دقيقة ${seconds} ثانية`;
-    }
-
-    updateCountdown();
-    const interval = setInterval(updateCountdown, 1000);
-  })
-  .catch(err => {
-    console.error(err);
-    countdownEl.innerHTML = "⚠️ فشل جلب وقت الافتتاح";
+    authMsg.textContent = data.message;
   });
+});
 
-// 🔵 جلب الرسائل
-function loadMessages() {
-  fetch('/.netlify/functions/chat')
-    .then(res => res.json())
-    .then(data => {
-      messagesEl.innerHTML = data.messages.map(msg =>
-        `<div><strong>${msg.username}:</strong> ${msg.message}</div>`
-      ).join('');
-    })
-    .catch(err => {
-      console.error(err);
-      messagesEl.innerHTML = "⚠️ فشل جلب الرسائل";
-    });
-}
-
-loadMessages();
-setInterval(loadMessages, 1000);
-
-// 📝 إرسال رسالة
-chatForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const google_id = localStorage.getItem("google_id");
-  const message = document.getElementById("message").value;
-
-  fetch('/.netlify/functions/chat', {
+loginBtn.addEventListener('click', () => {
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  fetch('/api/login', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ google_id, message })
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({ email, password })
   })
   .then(res => res.json())
-  .then(() => {
-    document.getElementById("message").value = '';
-    loadMessages();
-  })
-  .catch(err => console.error(err));
+  .then(data => {
+    if(data.success){
+      localStorage.setItem('user_id', data.user.id);
+      localStorage.setItem('username', data.user.username);
+      localStorage.setItem('rank', data.user.rank);
+      authSection.style.display = 'none';
+      chatSection.style.display = 'block';
+      loadMessages();
+      setInterval(loadMessages, 1000);
+    } else {
+      authMsg.textContent = data.message;
+    }
+  });
 });
+
+logoutBtn.addEventListener('click', () => {
+  localStorage.clear();
+  authSection.style.display = 'block';
+  chatSection.style.display = 'none';
+});
+
+chatForm.addEventListener('submit', e => {
+  e.preventDefault();
+  const message = document.getElementById('message').value;
+  const user_id = localStorage.getItem('user_id');
+  fetch('/api/message', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({ user_id, message })
+  }).then(() => {
+    document.getElementById('message').value = '';
+    loadMessages();
+  });
+});
+
+function loadMessages(){
+  fetch('/api/messages')
+    .then(res => res.json())
+    .then(data => {
+      messagesEl.innerHTML = data.messages.map(msg => `
+        <div><strong>[${msg.rank}] ${msg.username}:</strong> ${msg.message}</div>
+      `).join('');
+    });
+}
