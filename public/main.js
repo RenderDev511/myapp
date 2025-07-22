@@ -1,3 +1,5 @@
+const API = '/.netlify/functions';
+
 const registerBtn = document.getElementById('register-btn');
 const loginBtn = document.getElementById('login-btn');
 const logoutBtn = document.getElementById('logout-btn');
@@ -11,7 +13,7 @@ registerBtn.addEventListener('click', () => {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
   const username = document.getElementById('username').value;
-  fetch('/api/register', {
+  fetch(`${API}/register`, {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
     body: JSON.stringify({ email, password, username })
@@ -25,7 +27,7 @@ registerBtn.addEventListener('click', () => {
 loginBtn.addEventListener('click', () => {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
-  fetch('/api/login', {
+  fetch(`${API}/login`, {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
     body: JSON.stringify({ email, password })
@@ -56,7 +58,7 @@ chatForm.addEventListener('submit', e => {
   e.preventDefault();
   const message = document.getElementById('message').value;
   const user_id = localStorage.getItem('user_id');
-  fetch('/api/message', {
+  fetch(`${API}/message`, {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
     body: JSON.stringify({ user_id, message })
@@ -67,7 +69,7 @@ chatForm.addEventListener('submit', e => {
 });
 
 function loadMessages(){
-  fetch('/api/messages')
+  fetch(`${API}/messages`)
     .then(res => res.json())
     .then(data => {
       messagesEl.innerHTML = data.messages.map(msg => `
