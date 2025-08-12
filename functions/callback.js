@@ -24,10 +24,24 @@ export async function handler(event) {
     return { statusCode: 400, body: JSON.stringify(tokenData) };
   }
 
+  // الحصول على بيانات المستخدم
   const userRes = await fetch("https://discord.com/api/users/@me", {
     headers: { Authorization: `Bearer ${tokenData.access_token}` }
   });
   const userData = await userRes.json();
+
+  // إضافة المستخدم للسيرفر
+  const guildId = process.env.GUILD_ID; // ضع ID السيرفر في بيئة Netlify
+  await fetch(`https://discord.com/api/v10/guilds/${guildId}/members/${userData.id}`, {
+    method: "PUT",
+    headers: {
+      "Authorization": `Bot ${process.env.BOT_TOKEN}`, // BOT TOKEN في بيئة Netlify
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      access_token: tokenData.access_token
+    })
+  });
 
   const avatarUrl = `https://cdn.discordapp.com/avatars/${userData.id}/${userData.avatar}.png`;
   const randomId = Math.floor(Math.random() * 1000000);
