@@ -1,19 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Discord OAuth Callback</title>
-</head>
-<body>
-  <h2>جارٍ تسجيل الدخول...</h2>
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const code = params.get("code");
+<script>
+const params = new URLSearchParams(window.location.search);
+const code = params.get("code");
 
-    if (!code) {
-      document.body.innerHTML = "<h3>❌ لم يتم العثور على كود OAuth</h3>";
-    } else {
-      document.body.innerHTML = `<h3>✅ الكود المستلم: ${code}</h3>`;
-    }
-  </script>
-</body>
-</html>
+if (code) {
+  fetch(`/.netlify/functions/oauth?code=${code}`)
+    .then(res => res.json())
+    .then(data => {
+      document.body.innerHTML = `<h3>مرحباً ${data.username}#${data.discriminator}</h3>
+      <img src="https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png" width="100">`;
+    });
+} else {
+  document.body.innerHTML = "<h3>❌ لم يتم العثور على كود OAuth</h3>";
+}
+</script>
