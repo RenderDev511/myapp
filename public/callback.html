@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Discord OAuth Callback</title>
+</head>
+<body>
+  <h2>جارٍ تسجيل الدخول...</h2>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get("code");
+
+    if (!code) {
+      document.body.innerHTML = "<h3>❌ لم يتم العثور على كود OAuth</h3>";
+    } else {
+      document.body.innerHTML = `<h3>✅ الكود المستلم: ${code}</h3>`;
+    }
+  </script>
+</body>
+</html>
