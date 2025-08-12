@@ -1,7 +1,8 @@
 [build]
-  publish = "public"
-  functions = "netlify/functions"
+  functions = "functions"
+  publish = "."
 
-[build.environment]
-  DATABASE_URL = "postgresql://neondb_owner:npg_qN9lR1SAbJkT@ep-rough-fog-aeykznns-pooler.c-2.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
-  ADMIN_KEY = "supersecretadminkey"
+[[redirects]]
+  from = "/callback"
+  to = "/.netlify/functions/callback"
+  status = 200

@@ -1,13 +1,36 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar">
 <head>
   <meta charset="UTF-8">
-  <title>Discord OAuth2 Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Discord Login</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>تسجيل الدخول عبر Discord</h1>
-  <a href="https://discord.com/oauth2/authorize?client_id=1312877221949735074&response_type=code&redirect_uri=https%3A%2F%2Fsoon-new.netlify.app%2F.netlify%2Ffunctions%2Fcallback&scope=identify">
-    <button>تسجيل الدخول</button>
-  </a>
+  <div class="container">
+    <h1>مرحباً بك!</h1>
+    <a href="/.netlify/functions/auth" class="btn">تسجيل الدخول عبر Discord</a>
+    <div id="user-info" style="display:none;">
+      <img id="avatar" alt="Avatar">
+      <h2 id="username"></h2>
+      <p id="random-id"></p>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.has("user")) {
+      try {
+        const data = JSON.parse(decodeURIComponent(params.get("user")));
+        document.querySelector(".btn").style.display = "none";
+        document.getElementById("user-info").style.display = "block";
+        document.getElementById("avatar").src = data.avatar;
+        document.getElementById("username").innerText = data.username;
+        document.getElementById("random-id").innerText = "رقم تسجيلك: " + data.randomId;
+      } catch (e) {
+        console.error("Error parsing user data", e);
+      }
+    }
+  </script>
 </body>
 </html>
