@@ -1,15 +1,31 @@
-<script>
-const params = new URLSearchParams(window.location.search);
-const code = params.get("code");
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Callback</title>
+</head>
+<body>
+  <h1>Authorizing...</h1>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get("code");
 
-if (code) {
-  fetch(`/.netlify/functions/oauth?code=${code}`)
-    .then(res => res.json())
-    .then(data => {
-      document.body.innerHTML = `<h3>مرحباً ${data.username}#${data.discriminator}</h3>
-      <img src="https://cdn.discordapp.com/avatars/${data.id}/${data.avatar}.png" width="100">`;
-    });
-} else {
-  document.body.innerHTML = "<h3>❌ لم يتم العثور على كود OAuth</h3>";
-}
-</script>
+    if (!code) {
+      document.body.innerHTML = "<p>No code provided!</p>";
+    } else {
+      fetch(`/.netlify/functions/callback?code=${code}`)
+        .then(res => res.json())
+        .then(data => {
+          document.body.innerHTML = `
+            <h2>Welcome ${data.username}</h2>
+            <img src="${data.avatar}" width="100" height="100">
+            <p>ID: ${data.id}</p>
+          `;
+        })
+        .catch(err => {
+          document.body.innerHTML = `<p>Error: ${err}</p>`;
+        });
+    }
+  </script>
+</body>
+</html>
