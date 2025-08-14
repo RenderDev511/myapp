@@ -1,70 +1,65 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Night Tools</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="https://img.icons8.com/fluency/48/code.png" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>موقع Night</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- شاشة التحميل -->
-    <div id="loading-screen">
-        <div class="loader"></div>
-        <h2 id="loading-text">جارٍ تحميل البيانات...</h2>
+
+<!-- شاشة التحميل -->
+<div id="loading-screen">
+  <div class="loading-content">
+    <div class="spinner"></div>
+    <p>جارٍ تحميل الموقع...</p>
+  </div>
+</div>
+
+<!-- رأس الموقع -->
+<header>
+  <h1 id="site-title">موقع Night</h1>
+  <nav>
+    <button id="home-btn">🏠 الرئيسية</button>
+    <button id="tools-btn">🛠 الأدوات</button>
+    <button id="about-btn">ℹ التعريف</button>
+  </nav>
+  <div class="controls">
+    <button id="theme-toggle">
+      <img id="theme-icon" src="https://img.icons8.com/ios-filled/24/moon-symbol.png" alt="Theme">
+    </button>
+    <button id="lang-toggle">EN</button>
+  </div>
+</header>
+
+<!-- المحتوى -->
+<main id="main-content">
+  <!-- الصفحة الرئيسية -->
+  <section id="home-section" class="page active">
+    <h2>مرحباً بك في موقع Night</h2>
+    <p>هنا تجد أدوات وبرمجيات رائعة!</p>
+  </section>
+
+  <!-- صفحة الأدوات -->
+  <section id="tools-section" class="page">
+    <h2>الأدوات المتاحة</h2>
+    <div class="card">
+      <img src="https://img.icons8.com/fluency/96/computer.png" alt="Driver Booster">
+      <h3>Driver Booster</h3>
+      <p>برنامج لتحديث تعريفات الكمبيوتر بسهولة.</p>
+      <button onclick="downloadDriver()">📥 استلام</button>
     </div>
+  </section>
 
-    <!-- المحتوى الرئيسي -->
-    <div id="main-content" class="hidden fade-in">
-        <header>
-            <h1 id="site-title">مرحباً بك في Night Tools</h1>
-            <nav>
-                <button onclick="showSection('home')">🏠 <span id="nav-home">الرئيسية</span></button>
-                <button onclick="showSection('tools')">🛠 <span id="nav-tools">الأدوات</span></button>
-                <button onclick="showSection('activation')">💻 <span id="nav-activation">تفعيل البرامج</span></button>
-                <button onclick="showSection('about')">ℹ️ <span id="nav-about">حول</span></button>
-            </nav>
-            <div class="top-controls">
-                <button id="theme-toggle">
-                    <img id="theme-icon" src="https://img.icons8.com/fluency-systems-regular/24/moon.png" alt="Theme" />
-                </button>
-                <button id="lang-toggle">EN</button>
-            </div>
-        </header>
+  <!-- صفحة التعريف -->
+  <section id="about-section" class="page">
+    <h2>عن المبرمج</h2>
+    <p>Night مطور محترف في البرمجة وتصميم المواقع.</p>
+    <h2>عن الموقع</h2>
+    <p>الموقع يوفر أدوات وبرمجيات لتحسين تجربتك الرقمية.</p>
+  </section>
+</main>
 
-        <!-- الصفحات -->
-        <section id="home" class="page-section">
-            <h2 id="home-title">الصفحة الرئيسية</h2>
-            <p id="home-desc">مرحباً بك! اختر ما تريد من القائمة.</p>
-        </section>
-
-        <section id="tools" class="page-section hidden">
-            <h2 id="tools-title">الأدوات والبرمجيات</h2>
-            <p id="tools-desc">هنا ستجد الأدوات المفيدة الخاصة بك.</p>
-        </section>
-
-        <section id="activation" class="page-section hidden">
-            <h2 id="activation-title">تفعيل البرامج</h2>
-            <div class="card fade-in-up">
-                <img src="https://www.arzalpro.com/wp-content/uploads/2023/09/IObit-Driver-Booster-1.webp" alt="Driver Booster">
-                <h3>Driver Booster</h3>
-                <p id="driver-desc">برنامج لتحديث التعريفات بسهولة.</p>
-                <button onclick="downloadFile()">📥 <span id="btn-download">استلام</span></button>
-            </div>
-        </section>
-
-        <section id="about" class="page-section hidden">
-            <h2 id="about-title">عن المبرمج والموقع</h2>
-            <div class="about-card fade-in-up">
-                <img src="https://img.icons8.com/fluency/96/developer.png" alt="Developer">
-                <h3>Night</h3>
-                <p id="about-dev">مبرمج ومطور مواقع وتطبيقات يقدم أدوات مميزة.</p>
-                <img src="https://img.icons8.com/fluency/96/domain.png" alt="Website">
-                <p id="about-site">Night Tools هو موقع يوفر أدوات مجانية واحترافية.</p>
-            </div>
-        </section>
-    </div>
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
