@@ -3,44 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موقعي</title>
+    <title>Night Tools</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="https://img.icons8.com/fluency/48/code.png" />
 </head>
 <body>
     <!-- شاشة التحميل -->
     <div id="loading-screen">
         <div class="loader"></div>
-        <h2>جارٍ تحميل البيانات...</h2>
+        <h2 id="loading-text">جارٍ تحميل البيانات...</h2>
     </div>
 
-    <!-- المحتوى -->
-    <div id="main-content" class="hidden">
+    <!-- المحتوى الرئيسي -->
+    <div id="main-content" class="hidden fade-in">
         <header>
-            <h1>مرحبا بك في موقعي</h1>
+            <h1 id="site-title">مرحباً بك في Night Tools</h1>
             <nav>
-                <button onclick="showSection('home')">الرئيسية</button>
-                <button onclick="showSection('tools')">الأدوات</button>
-                <button onclick="showSection('activation')">تفعيل البرامج</button>
+                <button onclick="showSection('home')">🏠 <span id="nav-home">الرئيسية</span></button>
+                <button onclick="showSection('tools')">🛠 <span id="nav-tools">الأدوات</span></button>
+                <button onclick="showSection('activation')">💻 <span id="nav-activation">تفعيل البرامج</span></button>
+                <button onclick="showSection('about')">ℹ️ <span id="nav-about">حول</span></button>
             </nav>
+            <div class="top-controls">
+                <button id="theme-toggle">
+                    <img id="theme-icon" src="https://img.icons8.com/fluency-systems-regular/24/moon.png" alt="Theme" />
+                </button>
+                <button id="lang-toggle">EN</button>
+            </div>
         </header>
 
+        <!-- الصفحات -->
         <section id="home" class="page-section">
-            <h2>الصفحة الرئيسية</h2>
-            <p>مرحباً بك! اختر ما تريد من القائمة.</p>
+            <h2 id="home-title">الصفحة الرئيسية</h2>
+            <p id="home-desc">مرحباً بك! اختر ما تريد من القائمة.</p>
         </section>
 
         <section id="tools" class="page-section hidden">
-            <h2>الأدوات و البرمجيات</h2>
-            <p>هنا قائمة الأدوات الخاصة بك...</p>
+            <h2 id="tools-title">الأدوات والبرمجيات</h2>
+            <p id="tools-desc">هنا ستجد الأدوات المفيدة الخاصة بك.</p>
         </section>
 
         <section id="activation" class="page-section hidden">
-            <h2>تفعيل البرامج</h2>
-            <div class="card">
+            <h2 id="activation-title">تفعيل البرامج</h2>
+            <div class="card fade-in-up">
                 <img src="https://i.ibb.co/1fmyYfq/driverbooster.png" alt="Driver Booster">
                 <h3>Driver Booster</h3>
-                <p>برنامج لتحديث التعريفات بسهولة.</p>
-                <button onclick="downloadFile()">استلام</button>
+                <p id="driver-desc">برنامج لتحديث التعريفات بسهولة.</p>
+                <button onclick="downloadFile()">📥 <span id="btn-download">استلام</span></button>
+            </div>
+        </section>
+
+        <section id="about" class="page-section hidden">
+            <h2 id="about-title">عن المبرمج والموقع</h2>
+            <div class="about-card fade-in-up">
+                <img src="https://img.icons8.com/fluency/96/developer.png" alt="Developer">
+                <h3>Night</h3>
+                <p id="about-dev">مبرمج ومطور مواقع وتطبيقات يقدم أدوات مميزة.</p>
+                <img src="https://img.icons8.com/fluency/96/domain.png" alt="Website">
+                <p id="about-site">Night Tools هو موقع يوفر أدوات مجانية واحترافية.</p>
             </div>
         </section>
     </div>
