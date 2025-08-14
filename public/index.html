@@ -1,65 +1,85 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>موقع Night</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexus Tools</title>
+  <link rel="icon" type="image/png" href="https://img.icons8.com/fluency/48/code.png" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<!-- شاشة التحميل -->
-<div id="loading-screen">
-  <div class="loading-content">
-    <div class="spinner"></div>
-    <p>جارٍ تحميل الموقع...</p>
+  <!-- شاشة تحميل -->
+  <div id="loading-screen">
+    <div class="loader"></div>
+    <p class="loading-text">Loading...</p>
   </div>
-</div>
 
-<!-- رأس الموقع -->
-<header>
-  <h1 id="site-title">موقع Night</h1>
-  <nav>
-    <button id="home-btn">🏠 الرئيسية</button>
-    <button id="tools-btn">🛠 الأدوات</button>
-    <button id="about-btn">ℹ التعريف</button>
-  </nav>
-  <div class="controls">
-    <button id="theme-toggle">
-      <img id="theme-icon" src="https://img.icons8.com/ios-filled/24/moon-symbol.png" alt="Theme">
-    </button>
-    <button id="lang-toggle">EN</button>
-  </div>
-</header>
-
-<!-- المحتوى -->
-<main id="main-content">
-  <!-- الصفحة الرئيسية -->
-  <section id="home-section" class="page active">
-    <h2>مرحباً بك في موقع Night</h2>
-    <p>هنا تجد أدوات وبرمجيات رائعة!</p>
-  </section>
-
-  <!-- صفحة الأدوات -->
-  <section id="tools-section" class="page">
-    <h2>الأدوات المتاحة</h2>
-    <div class="card">
-      <img src="https://img.icons8.com/fluency/96/computer.png" alt="Driver Booster">
-      <h3>Driver Booster</h3>
-      <p>برنامج لتحديث تعريفات الكمبيوتر بسهولة.</p>
-      <button onclick="downloadDriver()">📥 استلام</button>
+  <!-- الهيدر -->
+  <header>
+    <h1 class="logo">Nexus Tools</h1>
+    <nav>
+      <button class="nav-btn" data-page="home">Home</button>
+      <button class="nav-btn" data-page="tools">Tools</button>
+      <button class="nav-btn" data-page="activate">Activate</button>
+    </nav>
+    <div class="controls">
+      <button id="theme-toggle"><img id="theme-icon" src="https://img.icons8.com/fluency-systems-regular/24/moon.png"/></button>
+      <button id="lang-toggle"><img src="https://img.icons8.com/fluency-systems-regular/24/language.png"/></button>
     </div>
+  </header>
+
+  <!-- الصفحات -->
+  <main>
+    <!-- الصفحة الرئيسية -->
+    <section id="home" class="page active">
+      <h2 class="typewriter" data-en="Welcome to Nexus Tools" data-ar="مرحباً بك في Nexus Tools">Welcome to Nexus Tools</h2>
+      <p data-en="Your hub for tools and scripts." data-ar="مركزك للأدوات والبرمجيات.">Your hub for tools and scripts.</p>
+    </section>
+
+    <!-- صفحة الأدوات -->
+    <section id="tools" class="page">
+      <h2 data-en="Available Tools" data-ar="الأدوات المتاحة">Available Tools</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Tool Name</h3>
+          <p>Description of the tool.</p>
+        </div>
+        <div class="card">
+          <h3>Another Tool</h3>
+          <p>Details about the tool.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- صفحة التفعيل -->
+    <section id="activate" class="page">
+      <h2 data-en="Activate Programs" data-ar="تفعيل البرامج">Activate Programs</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3>Driver Booster</h3>
+          <p>Optimize and update your drivers.</p>
+          <button class="download-btn">Get</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- عن المبرمج والموقع -->
+  <section id="about">
+    <h2 data-en="About" data-ar="عن">About</h2>
+    <p data-en="This website was developed by Night to provide useful tools and scripts." 
+       data-ar="تم تطوير هذا الموقع بواسطة Night لتوفير أدوات وبرمجيات مفيدة.">
+       This website was developed by Night to provide useful tools and scripts.
+    </p>
   </section>
 
-  <!-- صفحة التعريف -->
-  <section id="about-section" class="page">
-    <h2>عن المبرمج</h2>
-    <p>Night مطور محترف في البرمجة وتصميم المواقع.</p>
-    <h2>عن الموقع</h2>
-    <p>الموقع يوفر أدوات وبرمجيات لتحسين تجربتك الرقمية.</p>
-  </section>
-</main>
+  <!-- الفوتر -->
+  <footer>
+    <p>&copy; 2025 Nexus Tools. All rights reserved.</p>
+    <button id="scroll-top">↑</button>
+  </footer>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
