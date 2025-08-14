@@ -3,406 +3,1010 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevChat 2025 - Next-Gen Communication Platform</title>
+    <title>Discord-Integrated Cookie Clicker</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            background: rgba(10, 15, 30, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 90vh;
+            border: 1px solid #4cc9f0;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #4361ee;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            color: #4cc9f0;
+            text-shadow: 0 0 10px rgba(76, 201, 240, 0.5);
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            border-bottom: 2px solid #4361ee;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 10px 20px;
+            background: rgba(67, 97, 238, 0.1);
+            border-radius: 10px;
+            min-width: 150px;
+            margin: 5px;
+            border: 1px solid #4361ee;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4cc9f0;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #aaa;
+        }
+
+        .game-area {
+            display: flex;
+            flex: 1;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .cookie-section {
+            flex: 3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #4361ee;
+        }
+
+        .cookie-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+        }
+
+        .cookie {
+            width: 100%;
+            height: 100%;
+            background: #d2691e;
+            border-radius: 50%;
+            position: relative;
+            cursor: pointer;
+            box-shadow: 
+                0 10px 20px rgba(0, 0, 0, 0.3),
+                inset 0 -10px 20px rgba(139, 69, 19, 0.5),
+                inset 0 10px 20px rgba(210, 180, 140, 0.8);
+            transition: transform 0.1s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .cookie::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(#8b4513 15%, transparent 16%),
+                radial-gradient(#8b4513 15%, transparent 16%);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+            border-radius: 50%;
+        }
+
+        .cookie:hover {
+            transform: scale(1.05);
+        }
+
+        .cookie:active {
+            transform: scale(0.95);
+        }
+
+        .click-effect {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: clickEffect 0.6s ease-out;
+        }
+
+        @keyframes clickEffect {
+            0% {
+                transform: scale(0.5);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+
+        .floating-cookie {
+            position: absolute;
+            font-size: 2rem;
+            animation: floatUp 1.5s ease-out forwards;
+            pointer-events: none;
+            z-index: 10;
+            color: #ffd700;
+            text-shadow: 0 0 5px rgba(255, 215, 0, 0.8);
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(0.5);
+                opacity: 0;
+            }
+        }
+
+        .upgrades-section {
+            flex: 2;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            border: 1px solid #4361ee;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #4cc9f0;
+            font-size: 1.8rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4361ee;
+        }
+
+        .upgrade {
+            background: rgba(67, 97, 238, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 1px solid transparent;
+        }
+
+        .upgrade:hover {
+            background: rgba(67, 97, 238, 0.2);
+            border: 1px solid #4cc9f0;
+            transform: translateY(-3px);
+        }
+
+        .upgrade-icon {
+            font-size: 2rem;
+            color: #4cc9f0;
+            width: 50px;
+            text-align: center;
+        }
+
+        .upgrade-info {
+            flex: 1;
+        }
+
+        .upgrade-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .upgrade-desc {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 8px;
+        }
+
+        .upgrade-cost {
+            font-weight: bold;
+            color: #4cc9f0;
+        }
+
+        .upgrade.owned {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .achievements-section {
+            flex: 2;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            padding: 20px;
+            overflow-y: auto;
+            margin-top: 20px;
+            border: 1px solid #4361ee;
+        }
+
+        .achievement {
+            background: rgba(67, 97, 238, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            opacity: 0.5;
+        }
+
+        .achievement.unlocked {
+            opacity: 1;
+            background: rgba(67, 97, 238, 0.2);
+            border: 1px solid #4cc9f0;
+        }
+
+        .achievement-icon {
+            font-size: 1.8rem;
+            color: #4cc9f0;
+            width: 50px;
+            text-align: center;
+        }
+
+        .achievement-info {
+            flex: 1;
+        }
+
+        .achievement-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .achievement-desc {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-top: 2px solid #4361ee;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            background: linear-gradient(to right, #4361ee, #4cc9f0);
+            color: #fff;
+            font-weight: bold;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .btn-reset {
+            background: linear-gradient(to right, #f72585, #b5179e);
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            color: #4cc9f0;
+            padding: 15px 25px;
+            border-radius: 10px;
+            border-left: 5px solid #4cc9f0;
+            transform: translateX(200%);
+            transition: transform 0.5s ease;
+            z-index: 1000;
+            max-width: 300px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .golden-cookie {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #ffd700, #ff8c00);
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 0 20px #ffd700;
+            animation: goldenPulse 2s infinite;
+            z-index: 100;
+        }
+
+        @keyframes goldenPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .discord-section {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px;
+            border: 1px solid #5865f2;
+            text-align: center;
+        }
+
+        .discord-title {
+            color: #5865f2;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .discord-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .discord-stat {
+            background: rgba(88, 101, 242, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            min-width: 150px;
+            border: 1px solid #5865f2;
+        }
+
+        .discord-stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #5865f2;
+            margin: 10px 0;
+        }
+
+        .discord-stat-label {
+            color: #aaa;
+        }
+
+        .webhook-status {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            background: rgba(88, 101, 242, 0.1);
+            border: 1px solid #5865f2;
+        }
+
+        .status-active {
+            color: #4ade80;
+        }
+
+        .status-inactive {
+            color: #f87171;
+        }
+
+        @media (max-width: 900px) {
+            .game-area {
+                flex-direction: column;
+            }
+            
+            .stats {
+                flex-wrap: wrap;
+            }
+            
+            .stat-box {
+                min-width: 120px;
+                margin: 5px;
+            }
+        }
+
+        /* Discord-themed scrollbars */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #4361ee;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #4cc9f0;
+        }
+    </style>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div id="loadingScreen" class="loading-screen">
-        <div class="spinner"></div>
-        <h2>DevChat 2025</h2>
-        <p>Loading next-generation communication platform...</p>
-    </div>
-
-    <!-- Main App Container -->
-    <div id="appContainer" class="app-container hidden">
-        <!-- Sidebar -->
-        <div class="sidebar">
-            <div class="server-list">
-                <div class="server-icon active">
-                    <i class="fas fa-home"></i>
-                </div>
-                <div class="server-icon">
-                    <i class="fas fa-hashtag"></i>
-                </div>
-                <div class="server-icon">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <div class="server-icon">
-                    <i class="fas fa-gamepad"></i>
-                </div>
-                <div class="server-icon">
-                    <i class="fas fa-music"></i>
-                </div>
-                <div class="server-divider"></div>
-                <div class="server-icon add-server">
-                    <i class="fas fa-plus"></i>
-                </div>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-cookie-bite"></i> Discord Cookie Clicker</h1>
+            <p>Click the cookie to earn cookies! Buy upgrades to earn more automatically!</p>
+        </header>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-value" id="cookies">0</div>
+                <div class="stat-label">Cookies</div>
             </div>
-            
-            <div class="channels-panel">
-                <div class="server-header">
-                    <h3>DevChat Community</h3>
-                    <i class="fas fa-chevron-down"></i>
-                </div>
-                
-                <div class="channel-category">
-                    <div class="category-header">
-                        <i class="fas fa-chevron-right"></i>
-                        <span>TEXT CHANNELS</span>
-                    </div>
-                    <div class="channel active">
-                        <i class="fas fa-hashtag"></i>
-                        <span>general</span>
-                    </div>
-                    <div class="channel">
-                        <i class="fas fa-hashtag"></i>
-                        <span>development</span>
-                    </div>
-                    <div class="channel">
-                        <i class="fas fa-hashtag"></i>
-                        <span>design</span>
-                    </div>
-                    <div class="channel">
-                        <i class="fas fa-hashtag"></i>
-                        <span>random</span>
-                    </div>
-                </div>
-                
-                <div class="channel-category">
-                    <div class="category-header">
-                        <i class="fas fa-chevron-right"></i>
-                        <span>VOICE CHANNELS</span>
-                    </div>
-                    <div class="channel">
-                        <i class="fas fa-microphone"></i>
-                        <span>General Voice</span>
-                        <span class="channel-users">3</span>
-                    </div>
-                    <div class="channel">
-                        <i class="fas fa-microphone"></i>
-                        <span>Gaming</span>
-                        <span class="channel-users">7</span>
-                    </div>
-                </div>
-                
-                <div class="channel-category">
-                    <div class="category-header">
-                        <i class="fas fa-chevron-right"></i>
-                        <span>DIRECT MESSAGES</span>
-                    </div>
-                    <div class="channel">
-                        <div class="user-avatar small">JD</div>
-                        <span>John Developer</span>
-                    </div>
-                    <div class="channel">
-                        <div class="user-avatar small">AS</div>
-                        <span>Alex Smith</span>
-                    </div>
-                </div>
+            <div class="stat-box">
+                <div class="stat-value" id="cps">0</div>
+                <div class="stat-label">Per Second</div>
             </div>
-            
-            <div class="user-panel">
-                <div class="user-info">
-                    <div class="user-avatar">YOU</div>
-                    <div class="user-details">
-                        <span class="username">YourUsername</span>
-                        <span class="user-status">Online</span>
-                    </div>
+            <div class="stat-box">
+                <div class="stat-value" id="clicks">0</div>
+                <div class="stat-label">Clicks</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="golden">0</div>
+                <div class="stat-label">Golden Cookies</div>
+            </div>
+        </div>
+        
+        <div class="discord-section">
+            <h2 class="discord-title"><i class="fab fa-discord"></i> Discord Integration</h2>
+            <div class="discord-stats">
+                <div class="discord-stat">
+                    <div class="discord-stat-label">Players Online</div>
+                    <div class="discord-stat-value" id="online-players">0</div>
                 </div>
-                <div class="user-actions">
-                    <i class="fas fa-microphone"></i>
-                    <i class="fas fa-headphones"></i>
-                    <i class="fas fa-cog"></i>
+                <div class="discord-stat">
+                    <div class="discord-stat-label">Total Clicks</div>
+                    <div class="discord-stat-value" id="total-clicks">0</div>
+                </div>
+                <div class="discord-stat">
+                    <div class="discord-stat-label">Webhook Status</div>
+                    <div class="webhook-status">
+                        <span class="status-active" id="webhook-status">Active</span>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <!-- Main Content -->
-        <div class="main-content">
-            <div class="chat-header">
-                <div class="channel-info">
-                    <i class="fas fa-hashtag"></i>
-                    <h2>general</h2>
-                    <p>Welcome to the general channel!</p>
+        <div class="game-area">
+            <div class="cookie-section">
+                <div class="cookie-container">
+                    <div class="cookie" id="cookie">
+                        <i class="fas fa-cookie-bite" style="font-size: 8rem; color: #8b4513; z-index: 2;"></i>
+                    </div>
                 </div>
-                <div class="chat-actions">
-                    <i class="fas fa-bell"></i>
-                    <i class="fas fa-pin"></i>
-                    <i class="fas fa-people-group"></i>
-                    <i class="fas fa-search"></i>
-                    <i class="fas fa-inbox"></i>
-                    <i class="fas fa-question-circle"></i>
-                </div>
+                <p>Click the cookie to earn cookies!</p>
             </div>
             
-            <div class="chat-messages">
-                <div class="message">
-                    <div class="user-avatar">JD</div>
-                    <div class="message-content">
-                        <div class="message-header">
-                            <span class="username">JohnDeveloper</span>
-                            <span class="timestamp">Today at 2:30 PM</span>
-                        </div>
-                        <div class="message-text">
-                            Hey everyone! Just finished implementing the new AI features for DevChat. Check them out!
-                        </div>
+            <div class="upgrades-section">
+                <h2 class="section-title">Upgrades</h2>
+                <div class="upgrade" id="upgrade1">
+                    <div class="upgrade-icon"><i class="fas fa-mouse-pointer"></i></div>
+                    <div class="upgrade-info">
+                        <div class="upgrade-name">Better Clicking</div>
+                        <div class="upgrade-desc">Doubles cookies per click</div>
+                        <div class="upgrade-cost">Cost: <span id="cost1">50</span> cookies</div>
                     </div>
                 </div>
-                
-                <div class="message">
-                    <div class="user-avatar">AS</div>
-                    <div class="message-content">
-                        <div class="message-header">
-                            <span class="username">AlexSmith</span>
-                            <span class="timestamp">Today at 2:32 PM</span>
-                        </div>
-                        <div class="message-text">
-                            That's awesome! Can you share some details about the implementation?
-                        </div>
+                <div class="upgrade" id="upgrade2">
+                    <div class="upgrade-icon"><i class="fas fa-robot"></i></div>
+                    <div class="upgrade-info">
+                        <div class="upgrade-name">Auto-Clicker</div>
+                        <div class="upgrade-desc">Automatically clicks once per second</div>
+                        <div class="upgrade-cost">Cost: <span id="cost2">100</span> cookies</div>
                     </div>
                 </div>
-                
-                <div class="message">
-                    <div class="user-avatar">YOU</div>
-                    <div class="message-content">
-                        <div class="message-header">
-                            <span class="username">YourUsername</span>
-                            <span class="timestamp">Today at 2:35 PM</span>
-                        </div>
-                        <div class="message-text">
-                            I'm really excited about the new collaboration tools! The real-time code sharing is game-changing.
-                        </div>
+                <div class="upgrade" id="upgrade3">
+                    <div class="upgrade-icon"><i class="fas fa-cookie"></i></div>
+                    <div class="upgrade-info">
+                        <div class="upgrade-name">Cookie Farm</div>
+                        <div class="upgrade-desc">Generates 5 cookies per second</div>
+                        <div class="upgrade-cost">Cost: <span id="cost3">500</span> cookies</div>
                     </div>
                 </div>
-                
-                <div class="message">
-                    <div class="user-avatar bot">AI</div>
-                    <div class="message-content">
-                        <div class="message-header">
-                            <span class="username">DevAssistant</span>
-                            <span class="timestamp">Today at 2:37 PM</span>
-                            <span class="bot-tag">BOT</span>
-                        </div>
-                        <div class="message-text">
-                            <strong>Tip:</strong> Use <code>/code</code> command to share code snippets with syntax highlighting!
-                        </div>
+                <div class="upgrade" id="upgrade4">
+                    <div class="upgrade-icon"><i class="fas fa-industry"></i></div>
+                    <div class="upgrade-info">
+                        <div class="upgrade-name">Cookie Factory</div>
+                        <div class="upgrade-desc">Generates 20 cookies per second</div>
+                        <div class="upgrade-cost">Cost: <span id="cost4">3000</span> cookies</div>
+                    </div>
+                </div>
+                <div class="upgrade" id="upgrade5">
+                    <div class="upgrade-icon"><i class="fas fa-rocket"></i></div>
+                    <div class="upgrade-info">
+                        <div class="upgrade-name">Cookie Rocket</div>
+                        <div class="upgrade-desc">Generates 100 cookies per second</div>
+                        <div class="upgrade-cost">Cost: <span id="cost5">10000</span> cookies</div>
                     </div>
                 </div>
             </div>
             
-            <div class="message-input">
-                <div class="input-actions">
-                    <i class="fas fa-plus-circle"></i>
-                    <i class="fas fa-gift"></i>
-                    <i class="fas fa-gif"></i>
-                    <i class="fas fa-sticker-mule"></i>
-                    <i class="fas fa-thumbs-up"></i>
+            <div class="achievements-section">
+                <h2 class="section-title">Achievements</h2>
+                <div class="achievement" id="ach1">
+                    <div class="achievement-icon"><i class="fas fa-medal"></i></div>
+                    <div class="achievement-info">
+                        <div class="achievement-name">First Cookie</div>
+                        <div class="achievement-desc">Click the cookie for the first time</div>
+                    </div>
                 </div>
-                <input type="text" placeholder="Message #general">
-                <div class="input-features">
-                    <i class="fas fa-face-smile"></i>
-                    <i class="fas fa-paperclip"></i>
+                <div class="achievement" id="ach2">
+                    <div class="achievement-icon"><i class="fas fa-medal"></i></div>
+                    <div class="achievement-info">
+                        <div class="achievement-name">Cookie Master</div>
+                        <div class="achievement-desc">Earn 1000 cookies</div>
+                    </div>
+                </div>
+                <div class="achievement" id="ach3">
+                    <div class="achievement-icon"><i class="fas fa-medal"></i></div>
+                    <div class="achievement-info">
+                        <div class="achievement-name">Click Enthusiast</div>
+                        <div class="achievement-desc">Click 100 times</div>
+                    </div>
+                </div>
+                <div class="achievement" id="ach4">
+                    <div class="achievement-icon"><i class="fas fa-medal"></i></div>
+                    <div class="achievement-info">
+                        <div class="achievement-name">Golden Touch</div>
+                        <div class="achievement-desc">Find 5 golden cookies</div>
+                    </div>
+                </div>
+                <div class="achievement" id="ach5">
+                    <div class="achievement-icon"><i class="fas fa-medal"></i></div>
+                    <div class="achievement-info">
+                        <div class="achievement-name">Upgrade Collector</div>
+                        <div class="achievement-desc">Purchase all upgrades</div>
+                    </div>
                 </div>
             </div>
         </div>
         
-        <!-- Members Panel -->
-        <div class="members-panel">
-            <div class="panel-header">
-                <h3>ONLINE — 24</h3>
-            </div>
-            <div class="member">
-                <div class="user-avatar online">JD</div>
-                <span>JohnDeveloper</span>
-                <i class="fas fa-microphone"></i>
-            </div>
-            <div class="member">
-                <div class="user-avatar online">AS</div>
-                <span>AlexSmith</span>
-            </div>
-            <div class="member">
-                <div class="user-avatar online">MJ</div>
-                <span>MariaJones</span>
-                <i class="fas fa-headphones"></i>
-            </div>
-            <div class="member">
-                <div class="user-avatar online">TP</div>
-                <span>TomPeterson</span>
-            </div>
-            <div class="member">
-                <div class="user-avatar online bot">AI</div>
-                <span>DevAssistant</span>
-                <span class="bot-tag">BOT</span>
-            </div>
+        <div class="controls">
+            <button class="btn" id="save-btn"><i class="fas fa-save"></i> Save Game</button>
+            <button class="btn btn-reset" id="reset-btn"><i class="fas fa-redo"></i> Reset Game</button>
         </div>
     </div>
-
-    <!-- Feature Showcase Modal -->
-    <div id="featureModal" class="modal hidden">
-        <div class="modal-content glass">
-            <span class="close">&times;</span>
-            <h2>DevChat 2025 - 30 Cutting-Edge Features</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <i class="fas fa-robot"></i>
-                    <h3>AI Assistant</h3>
-                    <p>Intelligent chat assistant for code help and moderation</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-code"></i>
-                    <h3>Live Code Sharing</h3>
-                    <p>Real-time collaborative code editing</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-vr-cardboard"></i>
-                    <h3>VR Meetings</h3>
-                    <p>Immersive virtual reality chat rooms</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-language"></i>
-                    <h3>Real-time Translation</h3>
-                    <p>Automatic translation between 100+ languages</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-brain"></i>
-                    <h3>Neural Voice</h3>
-                    <p>AI-generated voices for voice channels</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-shield-alt"></i>
-                    <h3>Quantum Encryption</h3>
-                    <p>Military-grade end-to-end encryption</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-bolt"></i>
-                    <h3>Lightning Speed</h3>
-                    <p>Messages delivered in under 10ms globally</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-cloud"></i>
-                    <h3>Edge Computing</h3>
-                    <p>Processing at network edge for minimal latency</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-sync"></i>
-                    <h3>Quantum Sync</h3>
-                    <p>Instant synchronization across all devices</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-project-diagram"></i>
-                    <h3>3D Workspaces</h3>
-                    <p>Spatial chat environments with 3D interfaces</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-wave-square"></i>
-                    <h3>Haptic Feedback</h3>
-                    <p>Tactile responses for messages and notifications</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-mind-share"></i>
-                    <h3>Mind Link</h3>
-                    <p>Brain-computer interface for thought-to-text</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-palette"></i>
-                    <h3>Neural Themes</h3>
-                    <p>AI-generated personalized interface themes</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-chart-network"></i>
-                    <h3>Social Graph</h3>
-                    <p>AI-powered connection recommendations</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-memory"></i>
-                    <h3>Memory Vault</h3>
-                    <p>Secure storage for important conversations</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-atom"></i>
-                    <h3>Quantum Search</h3>
-                    <p>Instant search through all conversations</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-dna"></i>
-                    <h3>Biometric Auth</h3>
-                    <p>Fingerprint, face, and voice recognition</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-satellite"></i>
-                    <h3>Satellite Network</h3>
-                    <p>Global connectivity via satellite mesh</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-robot"></i>
-                    <h3>Avatar AI</h3>
-                    <p>Intelligent avatars that learn your personality</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-glasses"></i>
-                    <h3>AR Overlays</h3>
-                    <p>Augmented reality chat overlays in real world</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-infinity"></i>
-                    <h3>Infinite Canvas</h3>
-                    <p>Endless collaborative whiteboard space</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-dna"></i>
-                    <h3>Emotion Detection</h3>
-                    <p>AI that detects mood from voice and text</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-biohazard"></i>
-                    <h3>Bio Integration</h3>
-                    <p>Health monitoring during long sessions</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-robot"></i>
-                    <h3>Auto Moderation</h3>
-                    <p>AI that prevents toxic behavior automatically</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-cloud-upload"></i>
-                    <h3>Neural Upload</h3>
-                    <p>Upload memories and experiences directly</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-meteor"></i>
-                    <h3>Meteor Messaging</h3>
-                    <p>Priority messages that break through distractions</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-compass"></i>
-                    <h3>Context Compass</h3>
-                    <p>Navigation through conversation threads</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-crown"></i>
-                    <h3>Royalty System</h3>
-                    <p>Decentralized reputation and governance</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-leaf"></i>
-                    <h3>Carbon Neutral</h3>
-                    <p>100% carbon-negative communication</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-star"></i>
-                    <h3>Quantum Rewards</h3>
-                    <p>Earn cryptocurrency for positive interactions</p>
-                </div>
-            </div>
-            <button class="btn btn-primary close-modal">Explore DevChat 2025</button>
-        </div>
+    
+    <div class="notification" id="notification">
+        <i class="fas fa-exclamation-circle"></i> <span id="notification-text">Notification message</span>
     </div>
 
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
-    <script src="app.js"></script>
+    <script>
+        // Game state
+        let gameState = {
+            cookies: 0,
+            clicks: 0,
+            goldenCookies: 0,
+            cookiesPerClick: 1,
+            cookiesPerSecond: 0,
+            upgrades: {
+                upgrade1: { owned: false, cost: 50 },
+                upgrade2: { owned: false, cost: 100 },
+                upgrade3: { owned: false, cost: 500 },
+                upgrade4: { owned: false, cost: 3000 },
+                upgrade5: { owned: false, cost: 10000 }
+            },
+            achievements: {
+                ach1: { unlocked: false },
+                ach2: { unlocked: false },
+                ach3: { unlocked: false },
+                ach4: { unlocked: false },
+                ach5: { unlocked: false }
+            }
+        };
+
+        // Discord webhook URL (replace with your actual webhook URL)
+        const WEBHOOK_URL = 'https://discord.com/api/webhooks/1405454172005994576/K6vrPedr0UWOcXa784doYyfJva-ox8T-7iUZVCEbt7VMUVZA1wVYyNlNsQZS9vigm00P';
+
+        // DOM Elements
+        const cookieElement = document.getElementById('cookie');
+        const cookiesElement = document.getElementById('cookies');
+        const cpsElement = document.getElementById('cps');
+        const clicksElement = document.getElementById('clicks');
+        const goldenElement = document.getElementById('golden');
+        const notificationElement = document.getElementById('notification');
+        const notificationTextElement = document.getElementById('notification-text');
+        const saveButton = document.getElementById('save-btn');
+        const resetButton = document.getElementById('reset-btn');
+        const onlinePlayersElement = document.getElementById('online-players');
+        const totalClicksElement = document.getElementById('total-clicks');
+
+        // Initialize game
+        function initGame() {
+            loadGame();
+            updateUI();
+            startGameLoop();
+            setupEventListeners();
+            
+            // Send Discord webhook when user enters
+            sendDiscordWebhook('join', 'A player has entered the game!');
+            
+            // Update online players count
+            updateOnlinePlayers();
+        }
+
+        // Set up event listeners
+        function setupEventListeners() {
+            cookieElement.addEventListener('click', handleClick);
+            
+            // Upgrade event listeners
+            document.getElementById('upgrade1').addEventListener('click', () => buyUpgrade('upgrade1', 2, 'cookiesPerClick'));
+            document.getElementById('upgrade2').addEventListener('click', () => buyUpgrade('upgrade2', 1, 'cookiesPerSecond'));
+            document.getElementById('upgrade3').addEventListener('click', () => buyUpgrade('upgrade3', 5, 'cookiesPerSecond'));
+            document.getElementById('upgrade4').addEventListener('click', () => buyUpgrade('upgrade4', 20, 'cookiesPerSecond'));
+            document.getElementById('upgrade5').addEventListener('click', () => buyUpgrade('upgrade5', 100, 'cookiesPerSecond'));
+            
+            // Button event listeners
+            saveButton.addEventListener('click', saveGame);
+            resetButton.addEventListener('click', resetGame);
+            
+            // Send Discord webhook when user leaves
+            window.addEventListener('beforeunload', () => {
+                sendDiscordWebhook('leave', 'A player has left the game!');
+            });
+        }
+
+        // Handle cookie click
+        function handleClick(e) {
+            gameState.cookies += gameState.cookiesPerClick;
+            gameState.clicks++;
+            
+            // Create click effect
+            createClickEffect(e);
+            
+            // Create floating cookie
+            createFloatingCookie(e);
+            
+            // Check achievements
+            checkAchievements();
+            
+            // Random chance for golden cookie
+            if (Math.random() < 0.02) {
+                spawnGoldenCookie();
+            }
+            
+            // Send click event to Discord
+            if (gameState.clicks % 10 === 0) {
+                sendDiscordWebhook('click', `A player has clicked ${gameState.clicks} times!`);
+            }
+            
+            updateUI();
+        }
+
+        // Create click effect
+        function createClickEffect(e) {
+            const rect = cookieElement.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const effect = document.createElement('div');
+            effect.className = 'click-effect';
+            effect.style.left = `${x}px`;
+            effect.style.top = `${y}px`;
+            cookieElement.appendChild(effect);
+            
+            setTimeout(() => {
+                effect.remove();
+            }, 600);
+        }
+
+        // Create floating cookie
+        function createFloatingCookie(e) {
+            const rect = cookieElement.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const floatingCookie = document.createElement('div');
+            floatingCookie.className = 'floating-cookie';
+            floatingCookie.innerHTML = `+${gameState.cookiesPerClick}`;
+            floatingCookie.style.left = `${x}px`;
+            floatingCookie.style.top = `${y}px`;
+            cookieElement.appendChild(floatingCookie);
+            
+            setTimeout(() => {
+                floatingCookie.remove();
+            }, 1500);
+        }
+
+        // Spawn golden cookie
+        function spawnGoldenCookie() {
+            const container = document.querySelector('.cookie-container');
+            const goldenCookie = document.createElement('div');
+            goldenCookie.className = 'golden-cookie';
+            
+            // Random position within container
+            const maxX = container.offsetWidth - 80;
+            const maxY = container.offsetHeight - 80;
+            const x = Math.floor(Math.random() * maxX);
+            const y = Math.floor(Math.random() * maxY);
+            
+            goldenCookie.style.left = `${x}px`;
+            goldenCookie.style.top = `${y}px`;
+            
+            goldenCookie.addEventListener('click', () => {
+                const reward = Math.floor(Math.random() * 1000) + 100;
+                gameState.cookies += reward;
+                gameState.goldenCookies++;
+                showNotification(`Golden Cookie! +${reward} cookies!`);
+                
+                // Send golden cookie event to Discord
+                sendDiscordWebhook('golden', `A player found a golden cookie! Reward: ${reward} cookies`);
+                
+                goldenCookie.remove();
+                updateUI();
+                checkAchievements();
+            });
+            
+            container.appendChild(goldenCookie);
+            
+            // Remove after 10 seconds
+            setTimeout(() => {
+                if (goldenCookie.parentNode) {
+                    goldenCookie.remove();
+                }
+            }, 10000);
+        }
+
+        // Buy upgrade
+        function buyUpgrade(upgradeId, value, stat) {
+            const upgrade = gameState.upgrades[upgradeId];
+            
+            if (upgrade.owned) return;
+            
+            if (gameState.cookies >= upgrade.cost) {
+                gameState.cookies -= upgrade.cost;
+                gameState[stat] += value;
+                upgrade.owned = true;
+                
+                // Update UI
+                document.getElementById(upgradeId).classList.add('owned');
+                showNotification(`Upgrade purchased! +${value} ${stat.replace('cookiesPer', '')}`);
+                
+                // Send upgrade purchase event to Discord
+                const upgradeName = document.querySelector(`#${upgradeId} .upgrade-name`).textContent;
+                sendDiscordWebhook('upgrade', `A player purchased: ${upgradeName}`);
+                
+                updateUI();
+                checkAchievements();
+            } else {
+                showNotification('Not enough cookies!');
+            }
+        }
+
+        // Check achievements
+        function checkAchievements() {
+            // First Cookie
+            if (!gameState.achievements.ach1.unlocked && gameState.clicks >= 1) {
+                unlockAchievement('ach1', 'First Cookie unlocked!');
+            }
+            
+            // Cookie Master
+            if (!gameState.achievements.ach2.unlocked && gameState.cookies >= 1000) {
+                unlockAchievement('ach2', 'Cookie Master unlocked!');
+            }
+            
+            // Click Enthusiast
+            if (!gameState.achievements.ach3.unlocked && gameState.clicks >= 100) {
+                unlockAchievement('ach3', 'Click Enthusiast unlocked!');
+            }
+            
+            // Golden Touch
+            if (!gameState.achievements.ach4.unlocked && gameState.goldenCookies >= 5) {
+                unlockAchievement('ach4', 'Golden Touch unlocked!');
+            }
+            
+            // Upgrade Collector
+            const allUpgradesOwned = Object.values(gameState.upgrades).every(upgrade => upgrade.owned);
+            if (!gameState.achievements.ach5.unlocked && allUpgradesOwned) {
+                unlockAchievement('ach5', 'Upgrade Collector unlocked!');
+                
+                // Send achievement event to Discord
+                sendDiscordWebhook('achievement', 'A player unlocked: Upgrade Collector!');
+            }
+        }
+
+        // Unlock achievement
+        function unlockAchievement(achievementId, message) {
+            gameState.achievements[achievementId].unlocked = true;
+            document.getElementById(achievementId).classList.add('unlocked');
+            showNotification(message);
+        }
+
+        // Show notification
+        function showNotification(message) {
+            notificationTextElement.textContent = message;
+            notificationElement.classList.add('show');
+            
+            setTimeout(() => {
+                notificationElement.classList.remove('show');
+            }, 3000);
+        }
+
+        // Update UI
+        function updateUI() {
+            cookiesElement.textContent = formatNumber(gameState.cookies);
+            cpsElement.textContent = formatNumber(gameState.cookiesPerSecond);
+            clicksElement.textContent = formatNumber(gameState.clicks);
+            goldenElement.textContent = gameState.goldenCookies;
+            totalClicksElement.textContent = formatNumber(gameState.clicks);
+            
+            // Update upgrade costs
+            document.getElementById('cost1').textContent = formatNumber(gameState.upgrades.upgrade1.cost);
+            document.getElementById('cost2').textContent = formatNumber(gameState.upgrades.upgrade2.cost);
+            document.getElementById('cost3').textContent = formatNumber(gameState.upgrades.upgrade3.cost);
+            document.getElementById('cost4').textContent = formatNumber(gameState.upgrades.upgrade4.cost);
+            document.getElementById('cost5').textContent = formatNumber(gameState.upgrades.upgrade5.cost);
+            
+            // Mark owned upgrades
+            Object.keys(gameState.upgrades).forEach(id => {
+                if (gameState.upgrades[id].owned) {
+                    document.getElementById(id).classList.add('owned');
+                }
+            });
+            
+            // Mark unlocked achievements
+            Object.keys(gameState.achievements).forEach(id => {
+                if (gameState.achievements[id].unlocked) {
+                    document.getElementById(id).classList.add('unlocked');
+                }
+            });
+        }
+
+        // Format large numbers
+        function formatNumber(num) {
+            if (num >= 1000000) {
+                return (num / 1000000).toFixed(2) + 'M';
+            }
+            if (num >= 1000) {
+                return (num / 1000).toFixed(1) + 'K';
+            }
+            return num;
+        }
+
+        // Game loop
+        function startGameLoop() {
+            setInterval(() => {
+                gameState.cookies += gameState.cookiesPerSecond;
+                updateUI();
+                checkAchievements();
+            }, 1000);
+        }
+
+        // Save game
+        function saveGame() {
+            localStorage.setItem('cookieClickerSave', JSON.stringify(gameState));
+            showNotification('Game saved successfully!');
+            
+            // Send save event to Discord
+            sendDiscordWebhook('save', 'A player saved their game progress');
+        }
+
+        // Load game
+        function loadGame() {
+            const save = localStorage.getItem('cookieClickerSave');
+            if (save) {
+                gameState = JSON.parse(save);
+            }
+        }
+
+        // Reset game
+        function resetGame() {
+            if (confirm('Are you sure you want to reset your game? All progress will be lost.')) {
+                gameState = {
+                    cookies: 0,
+                    clicks: 0,
+                    goldenCookies: 0,
+                    cookiesPerClick: 1,
+                    cookiesPerSecond: 0,
+                    upgrades: {
+                        upgrade1: { owned: false, cost: 50 },
+                        upgrade2: { owned: false, cost: 100 },
+                        upgrade3: { owned: false, cost: 500 },
+                        upgrade4: { owned: false, cost: 3000 },
+                        upgrade5: { owned: false, cost: 10000 }
+                    },
+                    achievements: {
+                        ach1: { unlocked: false },
+                        ach2: { unlocked: false },
+                        ach3: { unlocked: false },
+                        ach4: { unlocked: false },
+                        ach5: { unlocked: false }
+                    }
+                };
+                
+                // Reset UI
+                document.querySelectorAll('.upgrade').forEach(el => el.classList.remove('owned'));
+                document.querySelectorAll('.achievement').forEach(el => el.classList.remove('unlocked'));
+                
+                updateUI();
+                showNotification('Game reset!');
+                
+                // Send reset event to Discord
+                sendDiscordWebhook('reset', 'A player reset their game progress');
+            }
+        }
+
+        // Send Discord webhook
+        function sendDiscordWebhook(eventType, message) {
+            // In a real implementation, this would be sent to a backend server
+            // which would then send the webhook to Discord to avoid CORS issues
+            // For this demo, we'll simulate the functionality
+            
+            console.log(`Discord Webhook [${eventType}]: ${message}`);
+            
+            // Simulate updating online players
+            if (eventType === 'join') {
+                updateOnlinePlayers();
+            }
+        }
+
+        // Update online players count
+        function updateOnlinePlayers() {
+            // Simulate online players count
+            const players = Math.floor(Math.random() * 50) + 10;
+            onlinePlayersElement.textContent = players;
+        }
+
+        // Initialize the game when page loads
+        window.onload = initGame;
+    </script>
 </body>
 </html>
