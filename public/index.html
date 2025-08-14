@@ -1,36 +1,50 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Discord Login</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>موقعي</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1>مرحباً بك!</h1>
-    <a href="/.netlify/functions/auth" class="btn">تسجيل الدخول عبر Discord</a>
-    <div id="user-info" style="display:none;">
-      <img id="avatar" alt="Avatar">
-      <h2 id="username"></h2>
-      <p id="random-id"></p>
+    <!-- شاشة التحميل -->
+    <div id="loading-screen">
+        <div class="loader"></div>
+        <h2>جارٍ تحميل البيانات...</h2>
     </div>
-  </div>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    if (params.has("user")) {
-      try {
-        const data = JSON.parse(decodeURIComponent(params.get("user")));
-        document.querySelector(".btn").style.display = "none";
-        document.getElementById("user-info").style.display = "block";
-        document.getElementById("avatar").src = data.avatar;
-        document.getElementById("username").innerText = data.username;
-        document.getElementById("random-id").innerText = "رقم تسجيلك: " + data.randomId;
-      } catch (e) {
-        console.error("Error parsing user data", e);
-      }
-    }
-  </script>
+    <!-- المحتوى -->
+    <div id="main-content" class="hidden">
+        <header>
+            <h1>مرحبا بك في موقعي</h1>
+            <nav>
+                <button onclick="showSection('home')">الرئيسية</button>
+                <button onclick="showSection('tools')">الأدوات</button>
+                <button onclick="showSection('activation')">تفعيل البرامج</button>
+            </nav>
+        </header>
+
+        <section id="home" class="page-section">
+            <h2>الصفحة الرئيسية</h2>
+            <p>مرحباً بك! اختر ما تريد من القائمة.</p>
+        </section>
+
+        <section id="tools" class="page-section hidden">
+            <h2>الأدوات و البرمجيات</h2>
+            <p>هنا قائمة الأدوات الخاصة بك...</p>
+        </section>
+
+        <section id="activation" class="page-section hidden">
+            <h2>تفعيل البرامج</h2>
+            <div class="card">
+                <img src="https://i.ibb.co/1fmyYfq/driverbooster.png" alt="Driver Booster">
+                <h3>Driver Booster</h3>
+                <p>برنامج لتحديث التعريفات بسهولة.</p>
+                <button onclick="downloadFile()">استلام</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
