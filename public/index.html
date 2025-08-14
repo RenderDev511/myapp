@@ -3,331 +3,402 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevTools 2025 - Premium Development Tools</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>DevChat 2025 - Next-Gen Communication Platform</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="logo">
-            <i class="fas fa-code"></i>
-            <span>DevTools 2025</span>
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#tools">Tools</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="auth-buttons">
-            <button class="btn btn-outline" id="loginBtn">Login</button>
-            <button class="btn btn-primary" id="signupBtn">Sign Up</button>
-        </div>
-    </header>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="spinner"></div>
+        <h2>DevChat 2025</h2>
+        <p>Loading next-generation communication platform...</p>
+    </div>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Premium Development Tools for 2025</h1>
-            <p>Access cutting-edge tools designed for modern developers. Earn coins daily and unlock premium features.</p>
-            <div class="hero-buttons">
-                <button class="btn btn-primary">Explore Tools</button>
-                <button class="btn btn-outline">Daily Reward</button>
+    <!-- Main App Container -->
+    <div id="appContainer" class="app-container hidden">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="server-list">
+                <div class="server-icon active">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="server-icon">
+                    <i class="fas fa-hashtag"></i>
+                </div>
+                <div class="server-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="server-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <div class="server-icon">
+                    <i class="fas fa-music"></i>
+                </div>
+                <div class="server-divider"></div>
+                <div class="server-icon add-server">
+                    <i class="fas fa-plus"></i>
+                </div>
             </div>
-        </div>
-        <div class="hero-image">
-            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Development Tools">
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <h2>2025 Exclusive Features</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <i class="fas fa-robot"></i>
-                <h3>AI Code Assistant</h3>
-                <p>Intelligent code completion and debugging powered by AI</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-bolt"></i>
-                <h3>Real-time Collaboration</h3>
-                <p>Work with team members in real-time with zero latency</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-cloud"></i>
-                <h3>Cloud Integration</h3>
-                <p>Seamless integration with all major cloud providers</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-shield-alt"></i>
-                <h3>Advanced Security</h3>
-                <p>Enterprise-grade security with end-to-end encryption</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-mobile-alt"></i>
-                <h3>Mobile Development</h3>
-                <p>Build cross-platform mobile apps with native performance</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-chart-line"></i>
-                <h3>Performance Analytics</h3>
-                <p>Detailed insights and analytics for your applications</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-sync"></i>
-                <h3>Auto Deployment</h3>
-                <p>One-click deployment to multiple environments</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-code-branch"></i>
-                <h3>Version Control</h3>
-                <p>Advanced Git integration with visual branching</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-database"></i>
-                <h3>Database Designer</h3>
-                <p>Visual database schema design and management</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-plug"></i>
-                <h3>API Generator</h3>
-                <p>Automatically generate REST/GraphQL APIs</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-paint-brush"></i>
-                <h3>UI Designer</h3>
-                <p>Drag-and-drop interface builder with live preview</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-server"></i>
-                <h3>Container Management</h3>
-                <p>Kubernetes integration with visual orchestration</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-terminal"></i>
-                <h3>Advanced Terminal</h3>
-                <p>Powerful terminal with AI command suggestions</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-bug"></i>
-                <h3>Smart Debugger</h3>
-                <p>AI-powered debugging with root cause analysis</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-file-code"></i>
-                <h3>Code Review</h3>
-                <p>Automated code review with best practice suggestions</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-project-diagram"></i>
-                <h3>Architecture Planner</h3>
-                <p>Visual architecture design with pattern recommendations</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-cogs"></i>
-                <h3>Workflow Automation</h3>
-                <p>Create custom workflows with visual automation builder</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-language"></i>
-                <h3>Multi-language Support</h3>
-                <p>Support for 50+ programming languages and frameworks</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-history"></i>
-                <h3>Version History</h3>
-                <p>Complete project history with time-travel debugging</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-headset"></i>
-                <h3>24/7 AI Support</h3>
-                <p>Intelligent support assistant available anytime</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Tools Section -->
-    <section class="tools" id="tools">
-        <h2>Our Premium Tools</h2>
-        <div class="tools-grid">
-            <div class="tool-card">
-                <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Code Editor">
-                <div class="tool-info">
-                    <h3>Advanced Code Editor</h3>
-                    <p>Feature-rich editor with AI assistance</p>
-                    <div class="tool-price">
-                        <span class="coins">500 <i class="fas fa-coins"></i></span>
-                        <button class="btn btn-primary">Purchase</button>
+            
+            <div class="channels-panel">
+                <div class="server-header">
+                    <h3>DevChat Community</h3>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                
+                <div class="channel-category">
+                    <div class="category-header">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>TEXT CHANNELS</span>
+                    </div>
+                    <div class="channel active">
+                        <i class="fas fa-hashtag"></i>
+                        <span>general</span>
+                    </div>
+                    <div class="channel">
+                        <i class="fas fa-hashtag"></i>
+                        <span>development</span>
+                    </div>
+                    <div class="channel">
+                        <i class="fas fa-hashtag"></i>
+                        <span>design</span>
+                    </div>
+                    <div class="channel">
+                        <i class="fas fa-hashtag"></i>
+                        <span>random</span>
+                    </div>
+                </div>
+                
+                <div class="channel-category">
+                    <div class="category-header">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>VOICE CHANNELS</span>
+                    </div>
+                    <div class="channel">
+                        <i class="fas fa-microphone"></i>
+                        <span>General Voice</span>
+                        <span class="channel-users">3</span>
+                    </div>
+                    <div class="channel">
+                        <i class="fas fa-microphone"></i>
+                        <span>Gaming</span>
+                        <span class="channel-users">7</span>
+                    </div>
+                </div>
+                
+                <div class="channel-category">
+                    <div class="category-header">
+                        <i class="fas fa-chevron-right"></i>
+                        <span>DIRECT MESSAGES</span>
+                    </div>
+                    <div class="channel">
+                        <div class="user-avatar small">JD</div>
+                        <span>John Developer</span>
+                    </div>
+                    <div class="channel">
+                        <div class="user-avatar small">AS</div>
+                        <span>Alex Smith</span>
                     </div>
                 </div>
             </div>
-            <div class="tool-card">
-                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Database Tool">
-                <div class="tool-info">
-                    <h3>Database Manager</h3>
-                    <p>Visual database design and management</p>
-                    <div class="tool-price">
-                        <span class="coins">750 <i class="fas fa-coins"></i></span>
-                        <button class="btn btn-primary">Purchase</button>
+            
+            <div class="user-panel">
+                <div class="user-info">
+                    <div class="user-avatar">YOU</div>
+                    <div class="user-details">
+                        <span class="username">YourUsername</span>
+                        <span class="user-status">Online</span>
                     </div>
                 </div>
-            </div>
-            <div class="tool-card">
-                <img src="https://images.unsplash.com/photo-1558346490-a72e53ae6b91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="API Tool">
-                <div class="tool-info">
-                    <h3>API Builder</h3>
-                    <p>Create REST/GraphQL APIs visually</p>
-                    <div class="tool-price">
-                        <span class="coins">600 <i class="fas fa-coins"></i></span>
-                        <button class="btn btn-primary">Purchase</button>
-                    </div>
-                </div>
-            </div>
-            <div class="tool-card">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Deployment Tool">
-                <div class="tool-info">
-                    <h3>Deploy Master</h3>
-                    <p>One-click deployment to any platform</p>
-                    <div class="tool-price">
-                        <span class="coins">800 <i class="fas fa-coins"></i></span>
-                        <button class="btn btn-primary">Purchase</button>
-                    </div>
+                <div class="user-actions">
+                    <i class="fas fa-microphone"></i>
+                    <i class="fas fa-headphones"></i>
+                    <i class="fas fa-cog"></i>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Daily Reward Section -->
-    <section class="daily-reward">
-        <div class="reward-container glass">
-            <h2>Daily Reward System</h2>
-            <p>Earn coins every day just for visiting our platform!</p>
-            <div class="reward-counter">
-                <div class="counter-item">
-                    <span id="days">0</span>
-                    <p>Days</p>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="chat-header">
+                <div class="channel-info">
+                    <i class="fas fa-hashtag"></i>
+                    <h2>general</h2>
+                    <p>Welcome to the general channel!</p>
                 </div>
-                <div class="counter-item">
-                    <span id="hours">0</span>
-                    <p>Hours</p>
-                </div>
-                <div class="counter-item">
-                    <span id="minutes">0</span>
-                    <p>Minutes</p>
-                </div>
-                <div class="counter-item">
-                    <span id="seconds">0</span>
-                    <p>Seconds</p>
+                <div class="chat-actions">
+                    <i class="fas fa-bell"></i>
+                    <i class="fas fa-pin"></i>
+                    <i class="fas fa-people-group"></i>
+                    <i class="fas fa-search"></i>
+                    <i class="fas fa-inbox"></i>
+                    <i class="fas fa-question-circle"></i>
                 </div>
             </div>
-            <button class="btn btn-primary" id="claimReward">Claim Daily Reward</button>
-            <div class="reward-history">
-                <h3>Your Reward History</h3>
-                <ul id="rewardHistoryList">
-                    <li>No rewards claimed yet</li>
-                </ul>
+            
+            <div class="chat-messages">
+                <div class="message">
+                    <div class="user-avatar">JD</div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="username">JohnDeveloper</span>
+                            <span class="timestamp">Today at 2:30 PM</span>
+                        </div>
+                        <div class="message-text">
+                            Hey everyone! Just finished implementing the new AI features for DevChat. Check them out!
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="message">
+                    <div class="user-avatar">AS</div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="username">AlexSmith</span>
+                            <span class="timestamp">Today at 2:32 PM</span>
+                        </div>
+                        <div class="message-text">
+                            That's awesome! Can you share some details about the implementation?
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="message">
+                    <div class="user-avatar">YOU</div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="username">YourUsername</span>
+                            <span class="timestamp">Today at 2:35 PM</span>
+                        </div>
+                        <div class="message-text">
+                            I'm really excited about the new collaboration tools! The real-time code sharing is game-changing.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="message">
+                    <div class="user-avatar bot">AI</div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="username">DevAssistant</span>
+                            <span class="timestamp">Today at 2:37 PM</span>
+                            <span class="bot-tag">BOT</span>
+                        </div>
+                        <div class="message-text">
+                            <strong>Tip:</strong> Use <code>/code</code> command to share code snippets with syntax highlighting!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="message-input">
+                <div class="input-actions">
+                    <i class="fas fa-plus-circle"></i>
+                    <i class="fas fa-gift"></i>
+                    <i class="fas fa-gif"></i>
+                    <i class="fas fa-sticker-mule"></i>
+                    <i class="fas fa-thumbs-up"></i>
+                </div>
+                <input type="text" placeholder="Message #general">
+                <div class="input-features">
+                    <i class="fas fa-face-smile"></i>
+                    <i class="fas fa-paperclip"></i>
+                </div>
             </div>
         </div>
-    </section>
-
-    <!-- User Profile Modal -->
-    <div id="profileModal" class="modal">
-        <div class="modal-content glass">
-            <span class="close">&times;</span>
-            <h2>User Profile</h2>
-            <div class="profile-info">
-                <div class="profile-avatar">
-                    <i class="fas fa-user-circle"></i>
-                </div>
-                <div class="profile-details">
-                    <label for="userName">Name</label>
-                    <input type="text" id="userName" placeholder="Your Name">
-                    <label for="userEmail">Email</label>
-                    <input type="email" id="userEmail" placeholder="Your Email" readonly>
-                    <label for="userCoins">Coins</label>
-                    <input type="text" id="userCoins" placeholder="0" readonly>
-                    <button class="btn btn-primary" id="saveProfile">Save Changes</button>
-                </div>
+        
+        <!-- Members Panel -->
+        <div class="members-panel">
+            <div class="panel-header">
+                <h3>ONLINE — 24</h3>
+            </div>
+            <div class="member">
+                <div class="user-avatar online">JD</div>
+                <span>JohnDeveloper</span>
+                <i class="fas fa-microphone"></i>
+            </div>
+            <div class="member">
+                <div class="user-avatar online">AS</div>
+                <span>AlexSmith</span>
+            </div>
+            <div class="member">
+                <div class="user-avatar online">MJ</div>
+                <span>MariaJones</span>
+                <i class="fas fa-headphones"></i>
+            </div>
+            <div class="member">
+                <div class="user-avatar online">TP</div>
+                <span>TomPeterson</span>
+            </div>
+            <div class="member">
+                <div class="user-avatar online bot">AI</div>
+                <span>DevAssistant</span>
+                <span class="bot-tag">BOT</span>
             </div>
         </div>
     </div>
 
-    <!-- Login Modal -->
-    <div id="loginModal" class="modal">
+    <!-- Feature Showcase Modal -->
+    <div id="featureModal" class="modal hidden">
         <div class="modal-content glass">
             <span class="close">&times;</span>
-            <h2>Login to Your Account</h2>
-            <form id="loginForm">
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Password" required>
-                <button type="submit" class="btn btn-primary">Login</button>
-                <p>Don't have an account? <a href="#" id="showSignup">Sign Up</a></p>
-            </form>
-        </div>
-    </div>
-
-    <!-- Signup Modal -->
-    <div id="signupModal" class="modal">
-        <div class="modal-content glass">
-            <span class="close">&times;</span>
-            <h2>Create New Account</h2>
-            <form id="signupForm">
-                <input type="text" placeholder="Full Name" required>
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Password" required>
-                <input type="password" placeholder="Confirm Password" required>
-                <button type="submit" class="btn btn-primary">Sign Up</button>
-                <p>Already have an account? <a href="#" id="showLogin">Login</a></p>
-            </form>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>DevTools 2025</h3>
-                <p>Premium development tools for modern developers</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-discord"></i></a>
+            <h2>DevChat 2025 - 30 Cutting-Edge Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>AI Assistant</h3>
+                    <p>Intelligent chat assistant for code help and moderation</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Live Code Sharing</h3>
+                    <p>Real-time collaborative code editing</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-vr-cardboard"></i>
+                    <h3>VR Meetings</h3>
+                    <p>Immersive virtual reality chat rooms</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-language"></i>
+                    <h3>Real-time Translation</h3>
+                    <p>Automatic translation between 100+ languages</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Neural Voice</h3>
+                    <p>AI-generated voices for voice channels</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Quantum Encryption</h3>
+                    <p>Military-grade end-to-end encryption</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Lightning Speed</h3>
+                    <p>Messages delivered in under 10ms globally</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-cloud"></i>
+                    <h3>Edge Computing</h3>
+                    <p>Processing at network edge for minimal latency</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-sync"></i>
+                    <h3>Quantum Sync</h3>
+                    <p>Instant synchronization across all devices</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>3D Workspaces</h3>
+                    <p>Spatial chat environments with 3D interfaces</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-wave-square"></i>
+                    <h3>Haptic Feedback</h3>
+                    <p>Tactile responses for messages and notifications</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-mind-share"></i>
+                    <h3>Mind Link</h3>
+                    <p>Brain-computer interface for thought-to-text</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-palette"></i>
+                    <h3>Neural Themes</h3>
+                    <p>AI-generated personalized interface themes</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-network"></i>
+                    <h3>Social Graph</h3>
+                    <p>AI-powered connection recommendations</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-memory"></i>
+                    <h3>Memory Vault</h3>
+                    <p>Secure storage for important conversations</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-atom"></i>
+                    <h3>Quantum Search</h3>
+                    <p>Instant search through all conversations</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-dna"></i>
+                    <h3>Biometric Auth</h3>
+                    <p>Fingerprint, face, and voice recognition</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-satellite"></i>
+                    <h3>Satellite Network</h3>
+                    <p>Global connectivity via satellite mesh</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>Avatar AI</h3>
+                    <p>Intelligent avatars that learn your personality</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-glasses"></i>
+                    <h3>AR Overlays</h3>
+                    <p>Augmented reality chat overlays in real world</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-infinity"></i>
+                    <h3>Infinite Canvas</h3>
+                    <p>Endless collaborative whiteboard space</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-dna"></i>
+                    <h3>Emotion Detection</h3>
+                    <p>AI that detects mood from voice and text</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-biohazard"></i>
+                    <h3>Bio Integration</h3>
+                    <p>Health monitoring during long sessions</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-robot"></i>
+                    <h3>Auto Moderation</h3>
+                    <p>AI that prevents toxic behavior automatically</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-cloud-upload"></i>
+                    <h3>Neural Upload</h3>
+                    <p>Upload memories and experiences directly</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-meteor"></i>
+                    <h3>Meteor Messaging</h3>
+                    <p>Priority messages that break through distractions</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-compass"></i>
+                    <h3>Context Compass</h3>
+                    <p>Navigation through conversation threads</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-crown"></i>
+                    <h3>Royalty System</h3>
+                    <p>Decentralized reputation and governance</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Carbon Neutral</h3>
+                    <p>100% carbon-negative communication</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-star"></i>
+                    <h3>Quantum Rewards</h3>
+                    <p>Earn cryptocurrency for positive interactions</p>
                 </div>
             </div>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#tools">Tools</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Support</h4>
-                <ul>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">Documentation</a></li>
-                    <li><a href="#">Community</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Contact</h4>
-                <p><i class="fas fa-envelope"></i> support@devtools2025.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> San Francisco, CA</p>
-            </div>
+            <button class="btn btn-primary close-modal">Explore DevChat 2025</button>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 DevTools. All rights reserved.</p>
-        </div>
-    </footer>
+    </div>
 
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
