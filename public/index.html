@@ -1,85 +1,337 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nexus Tools</title>
-  <link rel="icon" type="image/png" href="https://img.icons8.com/fluency/48/code.png" />
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevTools 2025 - Premium Development Tools</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <i class="fas fa-code"></i>
+            <span>DevTools 2025</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="auth-buttons">
+            <button class="btn btn-outline" id="loginBtn">Login</button>
+            <button class="btn btn-primary" id="signupBtn">Sign Up</button>
+        </div>
+    </header>
 
-  <!-- شاشة تحميل -->
-  <div id="loading-screen">
-    <div class="loader"></div>
-    <p class="loading-text">Loading...</p>
-  </div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Premium Development Tools for 2025</h1>
+            <p>Access cutting-edge tools designed for modern developers. Earn coins daily and unlock premium features.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">Explore Tools</button>
+                <button class="btn btn-outline">Daily Reward</button>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Development Tools">
+        </div>
+    </section>
 
-  <!-- الهيدر -->
-  <header>
-    <h1 class="logo">Nexus Tools</h1>
-    <nav>
-      <button class="nav-btn" data-page="home">Home</button>
-      <button class="nav-btn" data-page="tools">Tools</button>
-      <button class="nav-btn" data-page="activate">Activate</button>
-    </nav>
-    <div class="controls">
-      <button id="theme-toggle"><img id="theme-icon" src="https://img.icons8.com/fluency-systems-regular/24/moon.png"/></button>
-      <button id="lang-toggle"><img src="https://img.icons8.com/fluency-systems-regular/24/language.png"/></button>
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <h2>2025 Exclusive Features</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <i class="fas fa-robot"></i>
+                <h3>AI Code Assistant</h3>
+                <p>Intelligent code completion and debugging powered by AI</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-bolt"></i>
+                <h3>Real-time Collaboration</h3>
+                <p>Work with team members in real-time with zero latency</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-cloud"></i>
+                <h3>Cloud Integration</h3>
+                <p>Seamless integration with all major cloud providers</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Advanced Security</h3>
+                <p>Enterprise-grade security with end-to-end encryption</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Mobile Development</h3>
+                <p>Build cross-platform mobile apps with native performance</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-line"></i>
+                <h3>Performance Analytics</h3>
+                <p>Detailed insights and analytics for your applications</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-sync"></i>
+                <h3>Auto Deployment</h3>
+                <p>One-click deployment to multiple environments</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-code-branch"></i>
+                <h3>Version Control</h3>
+                <p>Advanced Git integration with visual branching</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-database"></i>
+                <h3>Database Designer</h3>
+                <p>Visual database schema design and management</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-plug"></i>
+                <h3>API Generator</h3>
+                <p>Automatically generate REST/GraphQL APIs</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-paint-brush"></i>
+                <h3>UI Designer</h3>
+                <p>Drag-and-drop interface builder with live preview</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-server"></i>
+                <h3>Container Management</h3>
+                <p>Kubernetes integration with visual orchestration</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-terminal"></i>
+                <h3>Advanced Terminal</h3>
+                <p>Powerful terminal with AI command suggestions</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-bug"></i>
+                <h3>Smart Debugger</h3>
+                <p>AI-powered debugging with root cause analysis</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-file-code"></i>
+                <h3>Code Review</h3>
+                <p>Automated code review with best practice suggestions</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-project-diagram"></i>
+                <h3>Architecture Planner</h3>
+                <p>Visual architecture design with pattern recommendations</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-cogs"></i>
+                <h3>Workflow Automation</h3>
+                <p>Create custom workflows with visual automation builder</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-language"></i>
+                <h3>Multi-language Support</h3>
+                <p>Support for 50+ programming languages and frameworks</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-history"></i>
+                <h3>Version History</h3>
+                <p>Complete project history with time-travel debugging</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-headset"></i>
+                <h3>24/7 AI Support</h3>
+                <p>Intelligent support assistant available anytime</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="tools" id="tools">
+        <h2>Our Premium Tools</h2>
+        <div class="tools-grid">
+            <div class="tool-card">
+                <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=880&q=80" alt="Code Editor">
+                <div class="tool-info">
+                    <h3>Advanced Code Editor</h3>
+                    <p>Feature-rich editor with AI assistance</p>
+                    <div class="tool-price">
+                        <span class="coins">500 <i class="fas fa-coins"></i></span>
+                        <button class="btn btn-primary">Purchase</button>
+                    </div>
+                </div>
+            </div>
+            <div class="tool-card">
+                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Database Tool">
+                <div class="tool-info">
+                    <h3>Database Manager</h3>
+                    <p>Visual database design and management</p>
+                    <div class="tool-price">
+                        <span class="coins">750 <i class="fas fa-coins"></i></span>
+                        <button class="btn btn-primary">Purchase</button>
+                    </div>
+                </div>
+            </div>
+            <div class="tool-card">
+                <img src="https://images.unsplash.com/photo-1558346490-a72e53ae6b91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="API Tool">
+                <div class="tool-info">
+                    <h3>API Builder</h3>
+                    <p>Create REST/GraphQL APIs visually</p>
+                    <div class="tool-price">
+                        <span class="coins">600 <i class="fas fa-coins"></i></span>
+                        <button class="btn btn-primary">Purchase</button>
+                    </div>
+                </div>
+            </div>
+            <div class="tool-card">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="Deployment Tool">
+                <div class="tool-info">
+                    <h3>Deploy Master</h3>
+                    <p>One-click deployment to any platform</p>
+                    <div class="tool-price">
+                        <span class="coins">800 <i class="fas fa-coins"></i></span>
+                        <button class="btn btn-primary">Purchase</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Daily Reward Section -->
+    <section class="daily-reward">
+        <div class="reward-container glass">
+            <h2>Daily Reward System</h2>
+            <p>Earn coins every day just for visiting our platform!</p>
+            <div class="reward-counter">
+                <div class="counter-item">
+                    <span id="days">0</span>
+                    <p>Days</p>
+                </div>
+                <div class="counter-item">
+                    <span id="hours">0</span>
+                    <p>Hours</p>
+                </div>
+                <div class="counter-item">
+                    <span id="minutes">0</span>
+                    <p>Minutes</p>
+                </div>
+                <div class="counter-item">
+                    <span id="seconds">0</span>
+                    <p>Seconds</p>
+                </div>
+            </div>
+            <button class="btn btn-primary" id="claimReward">Claim Daily Reward</button>
+            <div class="reward-history">
+                <h3>Your Reward History</h3>
+                <ul id="rewardHistoryList">
+                    <li>No rewards claimed yet</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- User Profile Modal -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content glass">
+            <span class="close">&times;</span>
+            <h2>User Profile</h2>
+            <div class="profile-info">
+                <div class="profile-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="profile-details">
+                    <label for="userName">Name</label>
+                    <input type="text" id="userName" placeholder="Your Name">
+                    <label for="userEmail">Email</label>
+                    <input type="email" id="userEmail" placeholder="Your Email" readonly>
+                    <label for="userCoins">Coins</label>
+                    <input type="text" id="userCoins" placeholder="0" readonly>
+                    <button class="btn btn-primary" id="saveProfile">Save Changes</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </header>
 
-  <!-- الصفحات -->
-  <main>
-    <!-- الصفحة الرئيسية -->
-    <section id="home" class="page active">
-      <h2 class="typewriter" data-en="Welcome to Nexus Tools" data-ar="مرحباً بك في Nexus Tools">Welcome to Nexus Tools</h2>
-      <p data-en="Your hub for tools and scripts." data-ar="مركزك للأدوات والبرمجيات.">Your hub for tools and scripts.</p>
-    </section>
-
-    <!-- صفحة الأدوات -->
-    <section id="tools" class="page">
-      <h2 data-en="Available Tools" data-ar="الأدوات المتاحة">Available Tools</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Tool Name</h3>
-          <p>Description of the tool.</p>
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content glass">
+            <span class="close">&times;</span>
+            <h2>Login to Your Account</h2>
+            <form id="loginForm">
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <p>Don't have an account? <a href="#" id="showSignup">Sign Up</a></p>
+            </form>
         </div>
-        <div class="card">
-          <h3>Another Tool</h3>
-          <p>Details about the tool.</p>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="modal">
+        <div class="modal-content glass">
+            <span class="close">&times;</span>
+            <h2>Create New Account</h2>
+            <form id="signupForm">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Confirm Password" required>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+                <p>Already have an account? <a href="#" id="showLogin">Login</a></p>
+            </form>
         </div>
-      </div>
-    </section>
+    </div>
 
-    <!-- صفحة التفعيل -->
-    <section id="activate" class="page">
-      <h2 data-en="Activate Programs" data-ar="تفعيل البرامج">Activate Programs</h2>
-      <div class="card-grid">
-        <div class="card">
-          <h3>Driver Booster</h3>
-          <p>Optimize and update your drivers.</p>
-          <button class="download-btn">Get</button>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>DevTools 2025</h3>
+                <p>Premium development tools for modern developers</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#tools">Tools</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Community</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <p><i class="fas fa-envelope"></i> support@devtools2025.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> San Francisco, CA</p>
+            </div>
         </div>
-      </div>
-    </section>
-  </main>
+        <div class="footer-bottom">
+            <p>&copy; 2025 DevTools. All rights reserved.</p>
+        </div>
+    </footer>
 
-  <!-- عن المبرمج والموقع -->
-  <section id="about">
-    <h2 data-en="About" data-ar="عن">About</h2>
-    <p data-en="This website was developed by Night to provide useful tools and scripts." 
-       data-ar="تم تطوير هذا الموقع بواسطة Night لتوفير أدوات وبرمجيات مفيدة.">
-       This website was developed by Night to provide useful tools and scripts.
-    </p>
-  </section>
-
-  <!-- الفوتر -->
-  <footer>
-    <p>&copy; 2025 Nexus Tools. All rights reserved.</p>
-    <button id="scroll-top">↑</button>
-  </footer>
-
-  <script src="script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+    <script src="app.js"></script>
 </body>
 </html>
