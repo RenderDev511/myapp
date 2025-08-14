@@ -14,7 +14,7 @@ function showSection(id) {
 
 // تحميل ملف Driver Booster
 function downloadFile() {
-    const content = "رابط تحميل Driver Booster: https://example.com/driverbooster";
+    const content = "رابط تحميل Driver Booster: https://www.iobit.com/";
     const blob = new Blob([content], { type: "text/plain" });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
