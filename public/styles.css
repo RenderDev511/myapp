@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1a0a2e, #0d0419); /* Deep purple background */
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Prevent scrollbars from animations */
+}
+
+.container {
+  perspective: 1000px; /* For 3D flip effect if needed later */
+}
+
+.card {
+  width: 350px;
+  height: 500px;
+  position: relative;
+  transform-style: preserve-3d;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  /* Glow Animation */
+  animation: glow 3s ease-in-out infinite alternate;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards, glow 3s ease-in-out infinite alternate 1s; /* Start fade after glow delay */
+}
+
+@keyframes fadeInUp {
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+@keyframes glow {
+  0% {
+      box-shadow: 0 0 15px #8a2be2, 0 0 30px #9370db66; /* Purple glow */
+  }
+  100% {
+      box-shadow: 0 0 25px #9370db, 0 0 45px #8a2be244;
+  }
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  border-radius: 20px;
+  background: rgba(30, 10, 50, 0.7); /* Semi-transparent dark purple card bg */
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  border: 1px solid rgba(138, 43, 226, 0.3); /* Subtle purple border */
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #8a2be2; /* Purple border */
+  margin-bottom: 25px;
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.5); /* Inner glow */
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.name {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  background: linear-gradient(to right, #da70d6, #9370db, #8a2be2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+  letter-spacing: 1px;
+}
+
+.title {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #cbb6f0; /* Lighter purple for title */
+  font-weight: 300;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.skill {
+  background: rgba(138, 43, 226, 0.2);
+  color: #e6d5ff;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  border: 1px solid #8a2be2;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.skill:hover {
+  background: rgba(138, 43, 226, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+}
+
+/* Responsive adjustments */
+@media (max-width: 400px) {
+  .card {
+      width: 90vw;
+  }
+  .name {
+      font-size: 2rem;
+  }
+}
